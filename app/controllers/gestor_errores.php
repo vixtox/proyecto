@@ -11,7 +11,7 @@ class GestorErrores
      * por campo
      * @var array
      */
-    private $errores = array();
+    public $errores = array();
 
     private $format_prefix;
     private $format_suffix;
@@ -36,7 +36,11 @@ class GestorErrores
     public function AnotaError($campo, $descripcion)
     {
         $this->errores[$campo] = $descripcion;
+
+        array_push($this->errores, $descripcion);
     }
+
+  
 
     /**
      * Indica si hay errores

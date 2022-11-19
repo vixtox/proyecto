@@ -1,6 +1,7 @@
 <?php
 
-    function cif_valido($cif) {
+    function cifValido($cif) {
+
         $cif = strtoupper($cif);
         
         $cifRegEx1 = '/^[ABEH][0-9]{8}$/i';
@@ -36,7 +37,7 @@
         else return false;
     }
 
-    function nif_valido($nif) {
+    function nifValido($nif) {
         $nif = strtoupper($nif);
         
         $nifRegEx = '/^[0-9]{8}[A-Z]$/i';
@@ -53,4 +54,60 @@
             return ($letras[(substr($nif, 0, 8) % 23)] == $nif[8]);
         }
         else return false;
+
+    }
+
+    function telefonoValido($telefono){
+
+        $numerosTel = str_split($telefono, 1);
+        $digito1 = $numerosTel[0];
+
+        foreach($numerosTel AS $valor) :
+
+            if(!is_numeric($valor)){
+                return false;
+            }
+
+        endforeach;
+
+        if((count($numerosTel) == 9) && (($digito1 == 9) || ($digito1 == 8) || ($digito1 == 6) || ($digito1 == 7))){
+            return true;
+        }
+
+        return false;
+
+    }
+
+    function codPostalValido($codPostal){
+
+        $numerosCod = str_split($codPostal, 1);
+        
+
+        if(count($numerosCod) != 5){//Que tenga 5 números
+            return false;
+        }
+
+        foreach($numerosCod AS $valor) :
+
+            if(!is_numeric($valor)){//Que solo contenga números
+                return false;
+            }
+
+        endforeach;
+
+        if($numerosCod[0] > 5 || ($numerosCod[0] == 5 && $numerosCod[1] > 2)){//Que no sea superior a 52 (Melilla)
+            return false;
+        }
+
+        if($codPostal == '00000'){
+            return false;
+        }
+
+        return true;
+    }
+
+    function fechaValida($fecha){
+
+        
+
     }

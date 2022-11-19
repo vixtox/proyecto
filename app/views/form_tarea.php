@@ -12,26 +12,30 @@
 
     <form action="../controllers/procesar_form.php" method="post">
 
-        <label for="">NIF/CIF</label><!--A58818501-->
-        <input type="text" name="nifCif" value="<?= isset($_POST['nifCif']) ? $_POST['nifCif'] : '' ?>">
-        <span><?= isset($_POST['nifCif']) ? $gestor->Error($_POST["nifCif"]) : ''?></span>
+        <label for="">NIF/CIF</label><!--CIF: A58818501-->
+        <input type="text" name="nifCif" value="<?=ValorPost('nifCif')?>">
+        <span><?=verError('nifCif')?></span>
         <br><br>
 
         <label for="">Persona de contacto</label>
-        <input type="text" name="persContact" value="<?= isset($_POST['persContact']) ? $_POST['persContact'] : '' ?>">
-        <span><?= isset($_POST['persContact']) ? $gestor->Error($_POST["persContact"]) : ''?></span>
+        <input type="text" name="persContact" value="<?=ValorPost('persContact')?>">
+        <span><?=verError('persContact')?></span>
         <br><br>
 
         <label for="">Teléfono</label>
-        <input type="text" name="tel"><br><br>
+        <input type="text" name="tel" value="<?=ValorPost('tel')?>">
+        <span><?=verError('tel')?></span>
+        <br><br>
 
         <label for="">Descripción</label>
-        <textarea id="desc" name="desc" rows="2" cols="50"><?= isset($_POST['desc']) ? $_POST['desc'] : '' ?></textarea>
-        <span><?= isset($_POST['desc']) ? $gestor->Error($_POST["desc"]) : ''?></span>
+        <textarea id="desc" name="desc" rows="2" cols="50"><?=ValorPost('desc')?></textarea>
+        <span><?=verError('desc')?></span>
         <br><br>
         
         <label for="">Correo electrónico</label>
-        <input type="text" name="email"><br><br>
+        <input type="text" name="email" value="<?=ValorPost('email')?>">
+        <span><?=verError('email')?></span>
+        <br><br>
 
         <label for="">Dirección</label>
         <input type="text" name="dir"><br><br>
@@ -40,7 +44,9 @@
         <input type="text" name="pob"><br><br>
 
         <label for="">Código postal</label>
-        <input type="text" name="cod_p"><br><br>
+        <input type="text" name="codPostal" value="<?=ValorPost('codPostal')?>">
+        <span><?=verError('codPostal')?></span>
+        <br><br>
 
         <!--select Provincia-->
 

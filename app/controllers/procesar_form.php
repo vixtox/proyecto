@@ -26,32 +26,18 @@
         if(!codPostalValido($_POST["codPostal"])){
             $errores['codPostal'] = "El código postal no es válido";
         }
+        if(!fechaValida($_POST["fechaReal"])){
+            $errores['fechaReal'] = "La fecha no es válida";
+        }
 
-        //if($errores){
+        if($errores){
+
             include("../views/form_tarea.php");
-       // }
+
+        }else{
+
+            include('result_form.php');
+
+        }
        
     }
-
-    /*
-    if($_POST){
-
-        $nif = filtrado($_POST["nifCif"]);
-        $persona_contacto = filtrado($_POST["persContact"]);
-        $telefono = filtrado($_POST["tel"]);
-        $descripcion = filtrado($_POST["desc"]);
-        $email = filtrado($_POST["email"]);
-        $direccion = filtrado($_POST["dir"]);
-        $poblacion = filtrado($_POST["pob"]);
-        $codPostal = filtrado($_POST["cod_p"]);
-        //provincia select
-        $estado = filtrado($_POST["estado"]);
-        //operario select
-        $fecha_realiz = filtrado($_POST["fech_realiz"]);
-        $anot_ant = filtrado($_POST["anot_ant"]);
-        $anot_pos = filtrado($_POST["anot_post"]);
-        //subir ficheros
-        //subir fotos
-    }
-
-    */

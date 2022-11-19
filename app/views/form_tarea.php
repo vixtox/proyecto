@@ -61,7 +61,9 @@
         <!--select Operario encargado-->
 
         <label for="">Fecha de realización</label>
-        <input type="date" name="fech_realiz"><br><br>
+        <input type="date" name="fechaReal" value="<?=ValorPost('fechaReal')?>">
+        <span><?=verError('fechaReal')?></span>
+        <br><br>
 
         <label for="">Anotaciones anteriores</label>
         <textarea id="anot_ant" name="anot_ant" rows="2" cols="50"></textarea><br><br>

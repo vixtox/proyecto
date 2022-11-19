@@ -1,6 +1,7 @@
 <?php
 
     include("gestor_errores.php");
+    include("..//models/validarNIF_CIF.php");
 
     $gestor = new GestorErrores();
 
@@ -13,12 +14,16 @@
         if (empty($_POST["desc"])) {
             $gestor->AnotaError($_POST["desc"], "El campo no debe estar vacio");
         }
+        if(!cif_valido($_POST["nifCif"]) && !nif_valido($_POST["nifCif"])){
+            $gestor->AnotaError($_POST["nifCif"], "El NIF/CIF no es correcto");
+        }
         include("../views/form_tarea.php");
     }
 
+    /*
     if($_POST){
 
-        $nif_cif = filtrado($_POST["nifCif"]);
+        $nif = filtrado($_POST["nifCif"]);
         $persona_contacto = filtrado($_POST["persContact"]);
         $telefono = filtrado($_POST["tel"]);
         $descripcion = filtrado($_POST["desc"]);
@@ -36,23 +41,4 @@
         //subir fotos
     }
 
-    echo 
-            "<p>NIF/CIF: " . $nif_cif . "</p><p>Persona de contacto: " .
-            $persona_contacto . "</p><p>Teléfono: " .
-            $telefono . "</p><p>Descripción: " .
-            $descripcion . "</p><p>Correo electrónico: " .
-            $email . "</p><p>Dirección: " .
-            $direccion . "</p><p>Población: " .
-            $poblacion . "</p><p>Código postal: " .
-            $codPostal . "</p><p>Estado: " .
-            $estado . "</p><p>Fecha de realización: " .
-            $fecha_realiz . "</p><p>Anotaciones anteriores: " .
-            $anot_ant . "</p><p>Anotaciones posteriores: " .
-            $anot_pos . "</p>";
-
-    function filtrado($datos){
-        $datos = trim($datos); // Elimina espacios antes y después de los datos
-        $datos = stripslashes($datos); // Elimina backslashes \
-        $datos = htmlspecialchars($datos); // Traduce caracteres especiales en entidades HTML
-        return $datos;
-    }
+    */

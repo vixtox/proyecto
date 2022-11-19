@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario tareas</title>
-
 </head>
 <body>
 
@@ -13,8 +12,10 @@
 
     <form action="../controllers/procesar_form.php" method="post">
 
-        <label for="">NIF/CIF</label>
-        <input type="text" name="nifCif"><br><br>
+        <label for="">NIF/CIF</label><!--A58818501-->
+        <input type="text" name="nifCif" value="<?= isset($_POST['nifCif']) ? $_POST['nifCif'] : '' ?>">
+        <span><?= isset($_POST['nifCif']) ? $gestor->Error($_POST["nifCif"]) : ''?></span>
+        <br><br>
 
         <label for="">Persona de contacto</label>
         <input type="text" name="persContact" value="<?= isset($_POST['persContact']) ? $_POST['persContact'] : '' ?>">

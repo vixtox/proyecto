@@ -64,15 +64,15 @@
 
         foreach($numerosTel AS $valor) :
 
-            if(!is_numeric($valor)){
+            if(!is_numeric($valor)):
                 return false;
-            }
+            endif;
 
         endforeach;
 
-        if((count($numerosTel) == 9) && (($digito1 == 9) || ($digito1 == 8) || ($digito1 == 6) || ($digito1 == 7))){
+        if((count($numerosTel) == 9) && (($digito1 == 9) || ($digito1 == 8) || ($digito1 == 6) || ($digito1 == 7))):
             return true;
-        }
+        endif;
 
         return false;
 
@@ -83,47 +83,51 @@
         $numerosCod = str_split($codPostal, 1);
         
 
-        if(count($numerosCod) != 5){//Que tenga 5 números
+        if(count($numerosCod) != 5): //Que tenga 5 números
             return false;
-        }
+        endif;
 
         foreach($numerosCod AS $valor) :
 
-            if(!is_numeric($valor)){//Que solo contenga números
+            if(!is_numeric($valor)): //Que solo contenga números
                 return false;
-            }
+            endif;
 
         endforeach;
 
-        if($numerosCod[0] > 5 || ($numerosCod[0] == 5 && $numerosCod[1] > 2)){//Que no sea superior a 52 (Melilla)
+        if($numerosCod[0] > 5 || ($numerosCod[0] == 5 && $numerosCod[1] > 2)): //Que no sea superior a 52 (Melilla)
             return false;
-        }
+        endif;
 
-        if($codPostal == '00000'){
+        if($codPostal == '00000'):
             return false;
-        }
+        endif;
 
         return true;
     }
 
     function fechaValida($fecha){//Devuelve true si la fecha introducida es mayor que la actual
 
-        $fecha = explode("-", $fecha);//Array con la fecha en el formato de nuestra zona-cultura
-        $y = $fecha[0];
-        $m = $fecha[1];
-        $d = $fecha[2];
+        if($fecha):
 
-        $fechaActual = new DateTime();//Generar fecha actual
-        $fechaActual = $fechaActual->format('d-m-Y');
+            $fecha = explode("-", $fecha);//Array con la fecha en el formato de nuestra zona-cultura
+            $y = $fecha[0];
+            $m = $fecha[1];
+            $d = $fecha[2];
+    
+            $fechaActual = new DateTime();//Generar fecha actual
+            $fechaActual = $fechaActual->format('d-m-Y');
+    
+            $fechaActual = explode("-", $fechaActual);
+            $dayActual = $fechaActual[0];
+            $monthActual = $fechaActual[1];
+            $yearActual = $fechaActual[2];
+    
+            if(($y > $yearActual) || ($y == $yearActual && $m > $monthActual) || ($y == $yearActual && $m == $monthActual && $d > $dayActual)):
+                return true;
+            endif;
 
-        $fechaActual = explode("-", $fechaActual);
-        $dayActual = $fechaActual[0];
-        $monthActual = $fechaActual[1];
-        $yearActual = $fechaActual[2];
-
-        if(($y > $yearActual) || ($y == $yearActual && $m > $monthActual) || ($y == $yearActual && $m == $monthActual && $d > $dayActual)){
-            return true;
-        }
+        endif;
       
         return false;
 

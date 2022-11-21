@@ -8,9 +8,9 @@
         $direccion = $_POST["dir"];
         $poblacion = $_POST["pob"];
         $codPostal = $_POST["codPostal"];
-        //provincia select
+        $provincia = $_POST["prov"];
         $estado = $_POST["estado"];
-        //operario select
+        $operario = $_POST["operario"];
         $fecha_realiz = $_POST["fechaReal"];
         $anot_ant = $_POST["anot_ant"];
         $anot_pos = $_POST["anot_post"];
@@ -26,9 +26,9 @@
         $direccion . "</li><li>" .
         $poblacion . "</li><li>" .
         $codPostal . "</li><li>" .
-        //provincia select
+        $provincia . "</li><li>" .
         $estado . "</li><li>" .
-        //operario select
+        $operario . "</li><li>" .
         $fecha_realiz . "</li><li>" .
         $anot_ant . "</li><li>" .
         $anot_pos . "</li></ul>";

@@ -2,7 +2,9 @@
 
     include("utilsforms.php");
     include("validacion.php");
-
+    include('../models/claseConexion.php'); 
+        
+    $conexion = ClaseConexion::getInstance();
     $errores = [];
 
     if (!$_POST) { // Si no han enviado el fomulario

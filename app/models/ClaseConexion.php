@@ -4,10 +4,10 @@
     Class ClaseConexion{
 
         private $db;
-        private $dsn = 'mysql:dbname=bunglebuild;host=localhost';
+        private $url = 'mysql:dbname=bunglebuild;host=localhost';
         private $usuario = 'root';
         private $pass = '';
-        static $_instance;
+        private static $_instance;
 
         //La función construct es privada para evitar que el objeto pueda ser creado mediante new
         private function __construct(){
@@ -37,7 +37,7 @@
 
                 try {
 
-                    $this->db = new PDO($this->dsn, $this->usuario, $this->pass);
+                    $this->db = new PDO($this->url, $this->usuario, $this->pass);
                     $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     $this->db->exec("SET CHARACTER SET utf8");
 
@@ -49,40 +49,31 @@
 
             }
 
-            function getProvincias(){
+            function getListaSelect($tabla, $c_idx, $c_value, $condicion='')
+    {
+        $this->stmt = $this->db->prepare('SELECT ' . $c_idx . ',' . $c_value . ' FROM ' . $tabla . ' ' . $condicion);
+        $this->stmt->execute();
 
-                $sql = "SELECT codPoblacion, nombre FROM provincias";
+        $lista = array();
+        while ($row = $this->stmt->fetch(PDO::FETCH_ASSOC)) {
+            $lista[$row[$c_idx]] = $row[$c_value];
+        }
+        return $lista;
+    }
+
+
+            
+
+            
+
+            function insertarTarea(){
+
+                $sql = "INSERT INTO tareas (cod_tarea,nif_cif,nombre,telefono,descripcion,correo,poblacion,codigoPostal,
+                    provincia,estado,fechaCreacion,operarioEncargado,fechaRealizacion,anotacionesAnt,anotacionesPos)
+                    VALUES(0,'48937837R','Víctor Martínez Domínguez','657121379','Caer muro','victor1@gmail.com','Valverde del Camino',
+                    '21600','Huelva','P','2022-11-21','Rafael Hinestrosa','2022-11-22','Muro en mal estado','Muro derribado')";
                 $resultado = $this->db->prepare($sql);
                 $resultado->execute(array());
-
-                $provincias = array();
-
-                while($registro = $resultado->fetch(PDO::FETCH_ASSOC)):
-
-                    $provincias[$registro['codPoblacion']] = $registro['nombre'];
-
-                endwhile;
-
-                return $provincias;
-
-            }
-
-            function getOperarios(){
-
-                $sql = "SELECT nombre, apellidos FROM usuarios WHERE es_admin=0";
-                $resultado = $this->db->prepare($sql);
-                $resultado->execute(array());
-
-                $provincias = array();
-
-                while($registro = $resultado->fetch(PDO::FETCH_ASSOC)):
-
-                    $provincias[$registro['nombre']] = $registro['apellidos'];
-                    
-
-                endwhile;
-
-                return $provincias;
 
             }
 

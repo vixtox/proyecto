@@ -1,0 +1,11 @@
+<?php
+
+class Tarea
+{
+    private function __construct()
+    {
+    }
+
+
+    
+}

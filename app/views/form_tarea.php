@@ -48,33 +48,18 @@
         <span><?=verError('codPostal')?></span>
         <br><br>
 
-        <select name="prov" id="prov">
-            <option value="0">Selecciona provincia</option>
-
-            <?php foreach ($conexion->getProvincias() AS $id => $valor): ?>
-
-            <option value="<?php echo $id ?>"><?php echo $valor ?></option>
-
-            <?php endforeach; ?>
-        </select><br><br>
+        <?= CreaSelect('prov', Provincia::listaParaSelect(), filter_input(INPUT_POST, 'prov')) ?>
+        <br><br>
 
         <select name="estado" id="estado">
-            <option value="">Selecciona estado de la tarea</option>
             <option value="B">B (Esperando ser aprobada)</option>
             <option value="P">P (Pendiente)</option>
             <option value="R">R (Realizada)</option>
             <option value="C">C (Cancelada)</option>
         </select><br><br>
 
-        <select name="operario" id="operario">
-            <option value="0">Selecciona operario</option>
-
-            <?php foreach ($conexion->getOperarios() as $id => $valor): ?>
-
-            <option value="<?php echo $id ?>"><?php echo $id . " " . $valor ?></option>
-
-            <?php endforeach; ?>
-        </select><br><br>
+        <?= CreaSelect('operario', Operario::listaParaSelect(), filter_input(INPUT_POST, 'operario')) ?>
+        <br><br>
 
         <label for="">Fecha de realización</label>
         <input type="date" name="fechaReal" value="<?=ValorPost('fechaReal')?>">

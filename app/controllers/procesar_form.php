@@ -1,10 +1,18 @@
 <?php
 
     include("utilsforms.php");
-    include("validacion.php");
-    include('../models/claseConexion.php'); 
-        
+    include("../library/validarCIF.php");
+    include("../library/validarNIF.php");
+    include("../library/validarTelefono.php");
+    include("../library/validarCodPostal.php");
+    include("../library/validarFecha.php");
+    include('../models/ClaseConexion.php'); 
     $conexion = ClaseConexion::getInstance();
+    include("../models/Provincia.php");
+    include("../models/Operario.php");
+
+        
+   
     $errores = [];
 
     if (!$_POST) { // Si no han enviado el fomulario
@@ -39,6 +47,7 @@
         }else{
 
             include('result_form.php');
+            $conexion->insertarTarea();
 
         }
        

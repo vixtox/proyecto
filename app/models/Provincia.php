@@ -1,9 +1,9 @@
 <?php
 
-class Provincia
-{
-    private function __construct()
-    {
+class Provincia{
+
+    private function __construct(){
+
     }
 
     /**
@@ -12,8 +12,7 @@ class Provincia
 
     //el static no funciona.
 
-    static function listaParaSelect()
-    {
+    static function listaParaSelect(){
         return ClaseConexion::getInstance()->getListaSelect('provincias', 'codPoblacion', 'nombre');
     }
 }

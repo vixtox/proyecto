@@ -21,7 +21,7 @@
             return false;
         endif;
 
-        if($codPostal == '00000'):
+        if($numerosCod[0] == 0 && $numerosCod[1] == 0)://Que los dos primeros dígitos no sean 0
             return false;
         endif;
 

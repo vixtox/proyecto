@@ -6,38 +6,41 @@
     include("../library/validarTelefono.php");
     include("../library/validarCodPostal.php");
     include("../library/validarFecha.php");
-    include('../models/ClaseConexion.php'); 
-    $conexion = ClaseConexion::getInstance();
+    include("../library/creaSelect.php");
     include("../models/Provincia.php");
     include("../models/Operario.php");
-
-        
-   
+    include('../models/ClaseConexion.php'); 
+    $conexion = ClaseConexion::getInstance();
     $errores = [];
+    $fecha = date("Y-m-d");
 
     if (!$_POST) { // Si no han enviado el fomulario
         include("../views/form_tarea.php");
+     
     } else {
-        if (ValorPost('persContact') == '') {
-            $errores['persContact'] = "El campo no debe estar vacio";
+        if (valorPost('nombre') == '') {
+            $errores['nombre'] = "El campo no debe estar vacio";
         }
-        if (ValorPost('desc') == '') {
-            $errores['desc'] = "El campo no debe estar vacio";
+        if (valorPost('apellidos') == '') {
+            $errores['apellidos'] = "El campo no debe estar vacio";
         }
-        if(!cifValido($_POST["nifCif"]) && !nifValido($_POST["nifCif"])){
-            $errores['nifCif'] = "El NIF/CIF no es válido";
+        if (valorPost('descripcion') == '') {
+            $errores['descripcion'] = "El campo no debe estar vacio";
         }
-        if(!telefonoValido($_POST["tel"])){
-            $errores['tel'] = "El teléfono no es válido";
+        if(!cifValido($_POST["nif_cif"]) && !nifValido($_POST["nif_cif"])){
+            $errores['nif_cif'] = "El NIF/CIF no es válido";
         }
-        if(!filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL)) {
-            $errores['email'] = "El email no es válido";
+        if(!telefonoValido($_POST["telefono"])){
+            $errores['telefono'] = "El teléfono no es válido";
         }
-        if(!codPostalValido($_POST["codPostal"])){
-            $errores['codPostal'] = "El código postal no es válido";
+        if(!filter_input(INPUT_POST, 'correo', FILTER_VALIDATE_EMAIL)) {
+            $errores['correo'] = "El email no es válido";
         }
-        if(!fechaValida($_POST["fechaReal"])){
-            $errores['fechaReal'] = "La fecha no es válida";
+        if(!codPostalValido($_POST["codigo_postal"])){
+            $errores['codigo_postal'] = "El código postal no es válido";
+        }
+        if(!fechaValida($_POST["fecha_realizacion"])){
+            $errores['fecha_realizacion'] = "La fecha no es válida";
         }
 
         if($errores){
@@ -47,7 +50,6 @@
         }else{
 
             include('result_form.php');
-            $conexion->insertarTarea();
 
         }
        

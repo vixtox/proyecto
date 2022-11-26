@@ -2,7 +2,7 @@
 
     function creaSelect($name, $opciones, $valorDefecto = ''){
 
-        $html = "\n" . '<select name="' . $name . '">';
+        $html = "\n" . '<select  class="form-select" name="' . $name . '">';
 
         foreach ($opciones as $value => $text) {
 

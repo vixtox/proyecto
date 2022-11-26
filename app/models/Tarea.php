@@ -7,7 +7,7 @@
         }
 
         static function addTarea($nombre_campos, $valor_campos){
-            
+           
             return ClaseConexion::getInstance()->insertarCampos('tareas', $nombre_campos, $valor_campos);
         }
         

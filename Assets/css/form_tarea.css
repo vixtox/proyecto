@@ -1,0 +1,9 @@
+*{
+    margin: 1em;
+}
+
+.form-control, .form-select{
+
+    width: 15em;
+
+}

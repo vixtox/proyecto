@@ -6,6 +6,7 @@
     include("../library/validarTelefono.php");
     include("../library/validarCodPostal.php");
     include("../library/validarFecha.php");
+    include("../library/subirArchivo.php");
     include("../library/creaSelect.php");
     include("../models/Provincia.php");
     include("../models/Operario.php");
@@ -43,7 +44,12 @@
             $errores['fecha_realizacion'] = "La fecha no es válida";
         }
 
-        if($errores){
+        $idUltimaTarea = $conexion->getId()[0]+1;
+        
+        subirArchivo("arch_resumen",$idUltimaTarea);
+        subirArchivo("fotos",$idUltimaTarea);
+      
+         if($errores){
 
             include("../views/form_tarea.php");
 

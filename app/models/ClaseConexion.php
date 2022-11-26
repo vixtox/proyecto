@@ -10,6 +10,9 @@
         private static $_instance;
 
         //La función construct es privada para evitar que el objeto pueda ser creado mediante new
+        /**
+         * 
+         */
         private function __construct(){
 
             $this->conectar();
@@ -81,16 +84,16 @@
             $cadena = '';
 
             foreach($campos AS $id=>$valor){
+                
+                if($comillas){
+                    $cadena .= "'";
+                }
 
-                    if($comillas){
-                        $cadena .= "'";
-                    }
-
-                    $cadena .= $valor;
+                $cadena .= $valor;
                     
-                    if($comillas){
-                        $cadena .= "'";
-                    }
+                if($comillas){
+                    $cadena .= "'";
+                }
                    
                 if($id < (count($campos) - 1)){//Añade coma tras cada campo excepto al útlimo
 
@@ -103,5 +106,15 @@
             return $cadena;
 
         }
+
+
+        function getId()
+    {
+        $sql = "SELECT id FROM tareas GROUP BY id desc limit 1";
+        $resultado = $this->db->prepare($sql);
+        $resultado->execute(array());
+
+        return $resultado->fetch();
+    }
 
     }

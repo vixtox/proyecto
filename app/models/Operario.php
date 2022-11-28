@@ -7,12 +7,10 @@ class Operario
     }
 
     /**
-     * DEvuelve la lista de operarios para crear un select cod->nombre
+     * Devuelve la lista de operarios para crear un select value = nif, texto = nombre de operario
      */
 
-    //el static no funciona.
-
     static function listaParaSelect(){
-        return ClaseConexion::getInstance()->getListaSelect('usuarios', 'nif', 'nombre', 'WHERE es_admin=0');
+        return GestionDatabase::getInstance()->getListaSelect('usuarios', 'nif', 'nombre', 'WHERE es_admin=0');
     }
 }

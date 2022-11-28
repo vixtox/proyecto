@@ -6,18 +6,26 @@
     include("../library/validarTelefono.php");
     include("../library/validarCodPostal.php");
     include("../library/validarFecha.php");
-    include("../library/subirArchivo.php");
+   // include("../library/subirArchivo.php");
     include("../library/creaSelect.php");
     include("../models/Provincia.php");
     include("../models/Operario.php");
-    include('../models/ClaseConexion.php'); 
-    $conexion = ClaseConexion::getInstance();
+    include('../models/GestionDatabase.php'); 
+    
+    $conexion = GestionDatabase::getInstance();
     $errores = [];
-    $fecha = date("Y-m-d");
 
-    if (!$_POST) { // Si no han enviado el fomulario
+    /**
+     *  Si no han enviado el fomulario
+     */
+
+    if (!$_POST) {
         include("../views/form_tarea.php");
-     
+
+    /**
+     *  Si han enviado el fomulario
+     */
+
     } else {
         if (valorPost('nombre') == '') {
             $errores['nombre'] = "El campo no debe estar vacio";
@@ -44,18 +52,76 @@
             $errores['fecha_realizacion'] = "La fecha no es válida";
         }
 
-        $idUltimaTarea = $conexion->getId()[0]+1;
+       /* $idNuevaTarea = $conexion->getMaxId('tareas','id')+ 1;
         
-        subirArchivo("arch_resumen",$idUltimaTarea);
-        subirArchivo("fotos",$idUltimaTarea);
-      
+        subirArchivo("arch_resumen",$idNuevaTarea);
+        subirArchivo("fotos",$idNuevaTarea);*/
+
+        /**
+         * Si hay algún error se vuelve a cargar el formulario
+         */
+
          if($errores){
 
             include("../views/form_tarea.php");
 
+        /**
+         * Si todo está correcto se pasan los resultados para manipular los datos
+         */
+
         }else{
 
-            include('result_form.php');
+                    /**
+         * Se recogen todos los campos del formulario
+         */
+
+            $campos = $_POST;
+
+            /**
+             * Declara el nombre de los archivos o los deja en blanco si no se han enviado
+             */
+
+        /*    if ($_FILES['arch_resumen']['name'] == ""){
+                    $campos["arch_resumen"] = "";
+            }else{
+                    subirArchivo('arch_resumen', $idNuevaTarea);
+                    $campos["arch_resumen"] = "/../archivos/tarea_" . $idNuevaTarea . "_" . $_FILES['arch_resumen']['name'];
+            }
+        
+            if ($_FILES['fotos']['name'] == ""){
+                    $campos["fotos"] = "";
+            }else{
+                    subirArchivo('fotos', $idNuevaTarea);
+                    $campos["fotos"] = "/../archivos/tarea_" . $idNuevaTarea . "_" . $_FILES['fotos']['name'];
+            }*/
+
+            /**
+             * Array con los nombres de los campos de la base de datos
+             */
+
+            $nombre_campos = [];
+
+            /**
+             * Array con los valores de los campos enviados desde el formulario
+             */
+
+            $valor_campos = [];
+
+            foreach($campos AS $clave=>$valor){
+
+                    array_push($nombre_campos, $clave);
+                    array_push($valor_campos, $valor);
+
+            }
+
+            include('../models/Tarea.php');
+
+            /**
+             * LLama a la función de la clase tarea para insertar los ampos obtenidos en el formulario
+             */
+            Tarea::addTarea($nombre_campos, $valor_campos);
+        
+            echo "<a href='procesar_form.php'>Volver al formulario</a>";
 
         }
        

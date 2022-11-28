@@ -1,5 +1,9 @@
 <?php
 
+    /**
+     * 
+     */
+
     function creaSelect($name, $opciones, $valorDefecto = ''){
 
         $html = "\n" . '<select  class="form-select" name="' . $name . '">';

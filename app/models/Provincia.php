@@ -7,12 +7,10 @@ class Provincia{
     }
 
     /**
-     * DEvuelve la lista de provincias para crear un select cod->nombre
+     * Devuelve la lista de provincias para crear un select value = código provincia, texto = nombre provincia
      */
 
-    //el static no funciona.
-
     static function listaParaSelect(){
-        return ClaseConexion::getInstance()->getListaSelect('provincias', 'codPoblacion', 'nombre');
+        return GestionDatabase::getInstance()->getListaSelect('provincias', 'codPoblacion', 'nombre');
     }
 }

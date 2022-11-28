@@ -1,9 +1,16 @@
 *{
-    margin: 1em;
+
+    background-color: lightslategray;
+    text-align: center;
 }
 
 .form-control, .form-select{
 
-    width: 15em;
+    width: 30%;
+    margin-left: 35%;
+}
 
+h1{
+
+    margin-bottom: 0.5em;
 }

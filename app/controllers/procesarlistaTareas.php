@@ -4,7 +4,7 @@
     include('../models/GestionDatabase.php');
     include('../library/creaTable.php');
 
-    $listaTareas = Tarea::getListaTareas();
+    //$listaTareas = Tarea::getListaTareas();
 
     $nombreCampos = [
         'id','nif_cif','nombre','apellidos','telefono','descripcion','correo','direccion','poblacion',
@@ -12,32 +12,40 @@
         'anotaciones_ant','anotaciones_pos','arch_resumen','fotos'
     ];
 
+
+     // Preparar
+
+     $tamanioPagina = 5;
+
+     if(isset($_GET['pagina'])){
+
+         if($_GET['pagina'] == 1){
+
+             header('location:procesarListaTareas.php');
+         
+         }else{
+         
+             $pagina = $_GET['pagina'];
+
+         }
+
+     }else{
+
+         $pagina = 1;
+
+     }
+
+     $empezarDesde = ($pagina-1) * $tamanioPagina;
+    //echo "empezardesde: " . $empezarDesde . " pagina: " . $pagina . "<br>";
+
+    $numFilas = Tarea::getNumeroTareas();
+    $totalPaginas = ceil($numFilas / $tamanioPagina);
+
+    $registro = Tarea::getTareasPorPagina($empezarDesde, $tamanioPagina);
+
     include('../views/listaTareas.php');
 
-    /*echo '<table border=1><tr>';
+        for($i = 1; $i <= $totalPaginas; $i++){
 
-    foreach($nombreCampos AS $id=>$value) :
-            
-        echo '<th >' . $nombreCampos[$id] . '</th>';
-    
-    endforeach;
-
-    echo '</tr>';
-
-    foreach($listaTareas AS $valor) :
-
-        echo '<tr>';
-
-        foreach($nombreCampos AS $id=>$value) :
-            
-            echo '<td >' . $valor[$nombreCampos[$id]] . '</td>';
-        
-        endforeach;
-    
-      
-        echo '</tr>';
-
-    endforeach;
-
-    echo '</table>';*/
-
+            echo "<a href='?pagina=" . $i . "'>" . $i . "</a> ";
+        }

@@ -13,7 +13,7 @@
     <h2>Menu</h2>
     <div class="btn-group-vertical">
         <ul>
-            <li><a href="../controllers/listarTareas.php">Ver la lista de tareas</a></li>
+            <li><a href="../controllers/procesarListaTareas.php">Ver la lista de tareas</a></li>
             <li><a href="../controllers/procesar_form.php">Añadir una nueva tarea</a></li>
             <li><a href="">Modificar datos de una tarea</a></li>
             <li><a href="">Eliminar una tarea</a></li>

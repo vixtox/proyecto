@@ -166,4 +166,37 @@
             return $datos;
         }
 
+        public function numFilas($tabla){
+
+            $sql = "SELECT * FROM " . $tabla; 
+
+            $resultado = $this->db->prepare($sql);
+            $resultado->execute();
+    
+            $numFilas = $resultado->rowCount();
+
+            return $numFilas;
+        }
+
+        public function resultadosPorPagina($tabla, $empezarDesde, $tamanioPagina){
+
+            $queryLimite = "SELECT * FROM " . $tabla . " LIMIT " . $empezarDesde . "," . $tamanioPagina;
+
+            $resultado = $this->db->prepare($queryLimite);
+            $resultado->execute();
+
+            /*Almacenamos el resultado de fetchAll en una variable*/
+            $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+            return $datos;
+        }
+
+        public function loginUser($correo, $clave){
+
+            $sql = $this->db->query("SELECT nif FROM usuarios WHERE correo='" . $correo . "' AND clave='" . $clave . "'");
+            
+            return $sql->fetch();
+
+        }
+
     }

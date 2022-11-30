@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <?= creaTable('listaTareas', $nombreCampos, Tarea::getListaTareas()) ?>
-    
+    <?= creaTable('listaTareas', $nombreCampos, Tarea::getTareasPorPagina($empezarDesde, $tamanioPagina)) ?>
+ 
 </body>
 </html>

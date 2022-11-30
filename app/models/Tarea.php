@@ -32,6 +32,16 @@
            
             return GestionDatabase::getInstance()->selectAll('tareas');
         }
+
+        static function getNumeroTareas(){
+           
+            return GestionDatabase::getInstance()->numFilas('tareas');
+        }
         
+        static function getTareasPorPagina($empezarDesde, $tamanioPagina){
+           
+            return GestionDatabase::getInstance()->resultadosPorPagina('tareas', $empezarDesde, $tamanioPagina);
+        }
+
     }
     

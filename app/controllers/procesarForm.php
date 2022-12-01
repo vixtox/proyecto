@@ -121,7 +121,7 @@
              */
             Tarea::addTarea($nombre_campos, $valor_campos);
         
-            echo "<a href='procesar_form.php'>Volver al formulario</a>";
+            echo "<a href='procesarForm.php'>Volver al formulario</a>";
 
         }
        

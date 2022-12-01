@@ -43,5 +43,11 @@
             return GestionDatabase::getInstance()->resultadosPorPagina('tareas', $empezarDesde, $tamanioPagina);
         }
 
+        static function deleteTarea($id){
+           
+            return GestionDatabase::getInstance()->borrarFila('tareas', $id);
+        }
+
+
     }
     

@@ -3,13 +3,18 @@
     include('../models/Tarea.php');
     include('../models/GestionDatabase.php');
     include('../library/creaTable.php');
+    include('../library/formatearFecha.php');
 
     //$listaTareas = Tarea::getListaTareas();
 
-    $nombreCampos = [
+    /*$nombreCampos = [
         'id','nif_cif','nombre','apellidos','telefono','descripcion','correo','direccion','poblacion',
         'codigo_postal','provincia','estado','fecha_creacion','operario_encargado','fecha_realizacion',
         'anotaciones_ant','anotaciones_pos','arch_resumen','fotos'
+    ];*/
+
+    $nombreCampos = [
+        'id','nif_cif','nombre','apellidos','telefono','descripcion','estado','fecha_creacion','operario_encargado','fecha_realizacion'
     ];
 
 
@@ -43,9 +48,33 @@
 
     $registro = Tarea::getTareasPorPagina($empezarDesde, $tamanioPagina);
 
+    $listaValores = [];
+
+    foreach($registro AS $id=>$valor) : 
+
+       // $fechaCreacion = $valor['fecha_creacion'];
+        $valor['fecha_creacion'] = formatearFecha($valor['fecha_creacion']);
+        //$valor['fecha_creacion'] = $fechaCreacion;
+
+        $valor['fecha_realizacion'] = formatearFecha($valor['fecha_realizacion']);
+
+        array_push($listaValores, $valor);
+    
+    endforeach;
+
     include('../views/listaTareas.php');
 
-        for($i = 1; $i <= $totalPaginas; $i++){
+    if(isset($_GET['numPag'])){
 
-            echo "<a href='?pagina=" . $i . "'>" . $i . "</a> ";
+        if($_GET['numPag'] < 1 || $_GET['numPag'] > $totalPaginas){
+
+            $url = "procesarListaTareas.php?pagina=" . $pagina;
+
+        }else{
+
+            $url = "procesarListaTareas.php?pagina=" . $_GET['numPag'];
+            
         }
+            
+        header("Location:$url");
+    }

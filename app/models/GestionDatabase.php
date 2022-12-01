@@ -180,7 +180,7 @@
 
         public function resultadosPorPagina($tabla, $empezarDesde, $tamanioPagina){
 
-            $queryLimite = "SELECT * FROM " . $tabla . " LIMIT " . $empezarDesde . "," . $tamanioPagina;
+            $queryLimite = "SELECT * FROM " . $tabla . " ORDER BY fecha_realizacion LIMIT " . $empezarDesde . "," . $tamanioPagina;
 
             $resultado = $this->db->prepare($queryLimite);
             $resultado->execute();
@@ -196,6 +196,15 @@
             $sql = $this->db->query("SELECT nif FROM usuarios WHERE correo='" . $correo . "' AND clave='" . $clave . "'");
             
             return $sql->fetch();
+
+        }
+
+        public function borrarFila($tabla, $id){
+
+            $sql = "DELETE FROM " . $tabla . " WHERE id=" . $id; 
+        
+            $resultado = $this->db->prepare($sql);
+            $resultado->execute();
 
         }
 

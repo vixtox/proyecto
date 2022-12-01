@@ -14,7 +14,7 @@
 
     <div>
 
-        <form action="../controllers/procesar_form.php" method="post" enctype="multipart/form-data">
+        <form action="../controllers/procesarForm.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for=""  class="form-label">NIF/CIF</label>
                 <input class="form-control"  type="text" name="nif_cif" value="<?=valorPost('nif_cif')?>">

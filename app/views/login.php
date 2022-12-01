@@ -15,7 +15,7 @@
     <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
     <!-- Nuestro css-->
-    <link rel="stylesheet" type="text/css" href="static/css/index.css" th:href="@{../Assets/css/login.css}">
+    <link rel="stylesheet" type="text/css" href="../../Assets/css/login.css" th:href="@{../../Assets/css/login.css}">
 
 </head>
 <body>
@@ -23,7 +23,7 @@
         <div class="col-sm-8 main-section">
             <div class="modal-content">
                 <div class="col-12 user-img">
-                    <img src="../Assets/img/user.png" th:src="@{../Assets/img/user.png}"/>
+                    <img src="../../Assets/img/user.png" th:src="@{../../Assets/img/user.png}"/>
                 </div>
                 <form action="../controllers/procesarLogin.php" class="col-12" th:action="@{/login}" method="post">
                     <div class="form-group" id="user-group">

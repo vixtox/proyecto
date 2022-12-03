@@ -5,43 +5,31 @@
     include('../library/creaTable.php');
     include('../library/formatearFecha.php');
 
-    //$listaTareas = Tarea::getListaTareas();
-
-    /*$nombreCampos = [
-        'id','nif_cif','nombre','apellidos','telefono','descripcion','correo','direccion','poblacion',
-        'codigo_postal','provincia','estado','fecha_creacion','operario_encargado','fecha_realizacion',
-        'anotaciones_ant','anotaciones_pos','arch_resumen','fotos'
-    ];*/
-
     $nombreCampos = [
         'id','nif_cif','nombre','apellidos','telefono','descripcion','estado','fecha_creacion','operario_encargado','fecha_realizacion'
     ];
 
+    $tamanioPagina = 5;
 
-     // Preparar
+    if(isset($_GET['pagina'])){
 
-     $tamanioPagina = 5;
+        if($_GET['pagina'] == 1){
 
-     if(isset($_GET['pagina'])){
-
-         if($_GET['pagina'] == 1){
-
-             header('location:procesarListaTareas.php');
+            header('location:procesarListaTareas.php');
          
-         }else{
+        }else{
          
-             $pagina = $_GET['pagina'];
+            $pagina = $_GET['pagina'];
 
-         }
+        }
 
-     }else{
+    }else{
 
-         $pagina = 1;
+        $pagina = 1;
 
-     }
+    }
 
-     $empezarDesde = ($pagina-1) * $tamanioPagina;
-    //echo "empezardesde: " . $empezarDesde . " pagina: " . $pagina . "<br>";
+    $empezarDesde = ($pagina-1) * $tamanioPagina;
 
     $numFilas = Tarea::getNumeroTareas();
     $totalPaginas = ceil($numFilas / $tamanioPagina);
@@ -52,12 +40,8 @@
 
     foreach($registro AS $id=>$valor) : 
 
-       // $fechaCreacion = $valor['fecha_creacion'];
         $valor['fecha_creacion'] = formatearFecha($valor['fecha_creacion']);
-        //$valor['fecha_creacion'] = $fechaCreacion;
-
         $valor['fecha_realizacion'] = formatearFecha($valor['fecha_realizacion']);
-
         array_push($listaValores, $valor);
     
     endforeach;

@@ -7,10 +7,10 @@
     class Tarea{
         
         /**
-         * Constructor de la clase tarea privado
+         * Constructor de la clase Tarea
          */
 
-        private function __construct(){
+        public function __construct(){
 
         }
 
@@ -48,6 +48,15 @@
             return GestionDatabase::getInstance()->borrarFila('tareas', $id);
         }
 
+        static function getNombreCamposTarea(){
+           
+            return GestionDatabase::getInstance()->getNombreColunmasTabla('tareas');
+        }
+
+        static function getSelectTarea($id){
+           
+            return GestionDatabase::getInstance()->getSelectFila('tareas', $id);
+        }
 
     }
     

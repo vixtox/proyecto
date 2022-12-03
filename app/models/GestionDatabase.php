@@ -11,7 +11,6 @@
         private $usuario = 'root';
         private $pass = '';
         private static $_instance;
-
         
         /**
          * La función construct es privada para evitar que el objeto pueda ser creado mediante new
@@ -207,5 +206,30 @@
             $resultado->execute();
 
         }
+
+        public function getNombreColunmasTabla($tabla){
+
+            $sql = "SELECT COLUMN_NAME FROM Information_Schema.Columns WHERE TABLE_NAME ='" . $tabla . "'";
+
+            $resultado = $this->db->prepare($sql);
+            $resultado->execute();
+            
+            $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+            return $datos;
+        }
+
+        public function getSelectFila($tabla, $id){
+
+            $sql = "SELECT * FROM " . $tabla . " WHERE id=" . $id; 
+        
+            $resultado = $this->db->prepare($sql);
+            $resultado->execute();
+
+            $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+            return $datos;
+        }
+
 
     }

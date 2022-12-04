@@ -24,10 +24,10 @@
     <span>Nº páginas: <?=$totalPaginas ?></span>
     <br><br>
 
-    <form action="../controllers/procesarListaTareas.php" method="get">
+   <form action="../controllers/procesarListaTareas.php" method="get">
         <input type="text" name="numPag">
         <button>Ir a página</button>
     </form>
- 
+
 </body>
 </html>

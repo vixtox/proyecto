@@ -57,6 +57,11 @@
            
             return GestionDatabase::getInstance()->getSelectFila('tareas', $id);
         }
+    
+        static function updateTareas($names, $campos, $id){
+
+            return GestionDatabase::getInstance()->updateTareas('tareas', $names, $campos, $id);
+        }
 
     }
     

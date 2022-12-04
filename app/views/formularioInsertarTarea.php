@@ -10,11 +10,11 @@
 </head>
 <body>
 
-    <h1>Formulario insertar Tarea</h1>
+    <h1>Insertar Tarea</h1>
 
     <div>
 
-        <form action="../controllers/procesarForm.php" method="post" enctype="multipart/form-data">
+        <form action="../controllers/procesarInsertarTarea.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for=""  class="form-label">NIF/CIF</label>
                 <input class="form-control"  type="text" name="nif_cif" value="<?=valorPost('nif_cif')?>">

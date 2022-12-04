@@ -20,7 +20,7 @@
      */
 
     if (!$_POST) {
-        include("../views/form_tarea.php");
+        include("../views/formularioInsertarTarea.php");
 
     /**
      *  Si han enviado el fomulario
@@ -63,7 +63,7 @@
 
          if($errores){
 
-            include("../views/form_tarea.php");
+            include("../views/formularioInsetarTarea.php");
 
         /**
          * Si todo está correcto se pasan los resultados para manipular los datos
@@ -121,7 +121,7 @@
              */
             Tarea::addTarea($nombre_campos, $valor_campos);
         
-            echo "<a href='procesarForm.php'>Volver al formulario</a>";
+            echo "<a href='procesarInsertartarea.php'>Volver al formulario</a>";
 
         }
        

@@ -9,7 +9,9 @@
 </head>
 <body>
 
-    <?= $html ?>
+    <?= creaTableDetalles('filaTareaDetalles', $nombreCampos, $valoresCampos) ?>
+    
+    <a href="procesarListaTareas.php" class="btn btn-info" role="button">Volver</a>
  
 </body>
 </html>

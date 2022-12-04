@@ -14,7 +14,7 @@
     <div class="btn-group-vertical">
         <ul>
             <li><a href="../controllers/procesarListaTareas.php" class="btn btn-info" role="button">Ver la lista de tareas</a></li>
-            <li><a href="../controllers/procesarForm.php" class="btn btn-info" role="button">Añadir una nueva tarea</a></li>
+            <li><a href="../controllers/procesarInsertarTarea.php" class="btn btn-info" role="button">Añadir una nueva tarea</a></li>
             <li><a href="" class="btn btn-info" role="button">Modificar datos de una tarea</a></li>
             <li><a href="" class="btn btn-info" role="button">Eliminar una tarea</a></li>
             <li><a href="../controllers/procesarCompletarTarea.php" class="btn btn-info" role="button">Cambiar el estado de una tarea</a></li>

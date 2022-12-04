@@ -221,14 +221,29 @@
 
         public function getSelectFila($tabla, $id){
 
-            $sql = "SELECT * FROM " . $tabla . " WHERE id=" . $id; 
-        
+            $stmt = $this->db->query("SELECT * FROM " . $tabla . " WHERE id=" . $id);
+
+            return $stmt->fetch();
+        }
+
+        function updateTareas($tabla, $nombres, $campos, $idt){
+
+            $cadena = '';
+
+            $a_campos = explode(",", $campos);
+
+            foreach ($nombres as $valor => $contenido) {
+
+                $cadena .= $a_campos[$valor] . " = '" .  $contenido . "' ,";
+            }
+
+            $cadena = substr($cadena, 0, -1);
+
+            $sql = "UPDATE " . $tabla . " SET " . $cadena ." WHERE id = $idt";
+
             $resultado = $this->db->prepare($sql);
-            $resultado->execute();
-
-            $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
-
-            return $datos;
+            $resultado->execute(array());
+        
         }
 
 

@@ -23,7 +23,7 @@
         endforeach;
      
         $html .= '<td><a href="../views/confirmarBorrarTarea.php?id=' . $valor['id'] . '" class="btn btn-info" role="button">Borrar</a></td>
-            <td><a href="../controllers/procesaeActualizarTarea.php?id=' . $valor['id'] . '" class="btn btn-info" role="button">Actualizar</a></td>
+            <td><a href="../controllers/validar_modficiacion_tarea.php?id=' . $valor['id'] . '" class="btn btn-info" role="button">Actualizar</a></td>
             <td><a href="../controllers/procesarVerDetalles.php?id=' . $valor['id'] . '" class="btn btn-info" role="button">Ver detalles</a></td></tr>';
 
     endforeach;

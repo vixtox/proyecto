@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <?= creaTable('listaTareas', $nombreCampos, $listaValores) ?>
+    <?= creaTable('listaTareas', $nombreCampos, $nombreCamposTabla, $listaValores) ?>
 
     <a href="?pagina=1" class='btn btn-info' role='button'>Primera</a>
 
@@ -17,7 +17,7 @@
 
     <span>Página <?=$pagina ?></span>
 
-    <a href="?pagina=<?=($pagina==$totalPaginas) ? $pagina : $pagina + 1 ?>" class='btn btn-info' role='button'>Sigiente</a>
+    <a href="?pagina=<?=($pagina==$totalPaginas) ? $pagina : $pagina + 1 ?>" class='btn btn-info' role='button'>Siguiente</a>
 
     <a href="?pagina=<?=$totalPaginas?>" class='btn btn-info' role='button'>Última</a>
 

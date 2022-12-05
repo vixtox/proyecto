@@ -93,26 +93,7 @@
                 <span><?=verError('fecha_realizacion')?></span>
             </div>
             <br>
-        <!--  <div class="form-group">
-                <label for="" class="form-label">Anotaciones anteriores</label>
-                <textarea class="form-control" id="anotaciones_ant" name="anotaciones_ant" rows="2" cols="50"><?=valorPost('anotaciones_ant')?></textarea><br><br>
-            </div>
-
-            <div class="form-group">
-                <label for="" class="form-label">Anotaciones posteriores</label>
-                <textarea class="form-control" id="anotaciones_post" name="anotaciones_pos" rows="2" cols="50"><?=valorPost('anotaciones_pos')?></textarea><br><br>
-            </div>
-
-            <div class="form-group">
-                <label for="" class="form-label">Subir archivo</label>
-                <input class="form-control" type="file" name="arch_resumen"><br><br>
-            </div>
-
-            <div class="form-group">
-                <label for="" class="form-label">Subir fotos</label>
-                <input class="form-control" type="file" name="fotos"><br><br>
-            </div>
-    -->
+       
             <div class="form-group">
                 <button class="btn btn-primary">Enviar tarea</button>
             </div>

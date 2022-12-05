@@ -17,7 +17,7 @@
 
     <h1>Modificaciones Tarea</h1>
 
-    <form action='../controllers/validar_modficiacion_tarea.php?id=<?= $id ?>' method="post" enctype="multipart/form-data">
+    <form action='../controllers/procesarActualizarTarea.php?id=<?= $id ?>' method="post" enctype="multipart/form-data">
   
     <div class="form-group">
                 <label for=""  class="form-label">NIF/CIF</label>
@@ -73,7 +73,7 @@
             <br>
             <div class="form-group">
                 <label for="" class="form-label">Selecciona provincia</label>
-                <?= creaSelect('provincia', Provincia::listaParaSelect(), filter_input(INPUT_POST, 'provincia')) ?>
+                <?= creaSelect('provincia', Provincia::listaParaSelect(), isset($datosTarea["provincia"]) ? $datosTarea["provincia"] : ValorPost('provincia'), filter_input(INPUT_POST, 'provincia')) ?>
             </div>
             <br>
             <div class="form-group">
@@ -88,7 +88,7 @@
             <br>
             <div class="form-group">
                 <label for="" class="form-label">Selecciona operario</label>
-                <?= creaSelect('operario_encargado', Operario::listaParaSelect(), filter_input(INPUT_POST, 'operario_encargado')) ?>
+                <?= creaSelect('operario_encargado', Operario::listaParaSelect(), isset($datosTarea["operario_encargado"]) ? $datosTarea["operario_encargado"] : ValorPost('operario_encargado'), filter_input(INPUT_POST, 'operario_encargado')) ?>
             </div>
             <br>
             <div class="form-group">

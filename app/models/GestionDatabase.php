@@ -89,63 +89,11 @@
         
         public function insertarCampos($tabla, $nombre_campos, $valor_campos){
 
-            $cadena = $this->formatearValores($nombre_campos, false);//Segundo parametro controla si se ponen comillas entre elementos del array
-            $cadena2 = $this->formatearValores($valor_campos, true);
-            $sql = "INSERT INTO " . $tabla . "(" . $cadena . ") VALUES(" . $cadena2 . ")"; 
+            $sql = "INSERT INTO " . $tabla . "(" . $nombre_campos . ") VALUES(" . $valor_campos . ")"; 
         
             $resultado = $this->db->prepare($sql);
             $resultado->execute(array());
 
-        }
-
-        /**
-         * Función génerica que formatea los nombres y valores de campos para la sentencia SQL
-         */
-
-        private function formatearValores($campos, $comillas){
-
-            $cadena = '';
-
-            foreach($campos AS $id=>$valor){
-                
-                if($comillas){
-
-                    $cadena .= "'" . $valor . "'";
-
-                }else{
-
-                    $cadena .= $valor;
-
-                }
-                
-                /**
-                 * Añade coma tras cada campo excepto al útlimo
-                 */
-
-                if($id < (count($campos) - 1)){
-
-                    $cadena .= ",";
-
-                }
-                   
-            }
-
-            return $cadena;
-
-        }
-
-        /**
-         * Función que devuelve el valor máximo de un campo
-         */
-
-        public function getMaxId($tabla, $campo){
-                
-            $sql = "SELECT " . $campo . " FROM " . $tabla . " ORDER BY " . $campo . " desc limit 1";
-            $resultado = $this->db->prepare($sql);
-            $resultado->execute();
-            $resultado = $resultado->fetch()[0];
-            
-            return $resultado;
         }
 
         /**
@@ -226,25 +174,13 @@
             return $stmt->fetch();
         }
 
-        function updateTareas($tabla, $nombres, $campos, $idt){
+        function updateTarea($tabla, $sentencia, $id){
 
-            $cadena = '';
-
-            $a_campos = explode(",", $campos);
-
-            foreach ($nombres as $valor => $contenido) {
-
-                $cadena .= $a_campos[$valor] . " = '" .  $contenido . "' ,";
-            }
-
-            $cadena = substr($cadena, 0, -1);
-
-            $sql = "UPDATE " . $tabla . " SET " . $cadena ." WHERE id = $idt";
-
+            $sql = "UPDATE " . $tabla . " SET " . $sentencia ." WHERE id = $id";
+            
             $resultado = $this->db->prepare($sql);
             $resultado->execute(array());
         
         }
-
 
     }

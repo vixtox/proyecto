@@ -6,7 +6,6 @@
     include("../library/validarTelefono.php");
     include("../library/validarCodPostal.php");
     include("../library/validarFecha.php");
-   // include("../library/subirArchivo.php");
     include("../library/creaSelect.php");
     include("../models/Provincia.php");
     include("../models/Operario.php");
@@ -52,18 +51,13 @@
             $errores['fecha_realizacion'] = "La fecha no es válida";
         }
 
-       /* $idNuevaTarea = $conexion->getMaxId('tareas','id')+ 1;
-        
-        subirArchivo("arch_resumen",$idNuevaTarea);
-        subirArchivo("fotos",$idNuevaTarea);*/
-
         /**
          * Si hay algún error se vuelve a cargar el formulario
          */
 
          if($errores){
 
-            include("../views/formularioInsetarTarea.php");
+            include("../views/formularioInsertarTarea.php");
 
         /**
          * Si todo está correcto se pasan los resultados para manipular los datos
@@ -76,24 +70,6 @@
          */
 
             $campos = $_POST;
-
-            /**
-             * Declara el nombre de los archivos o los deja en blanco si no se han enviado
-             */
-
-        /*    if ($_FILES['arch_resumen']['name'] == ""){
-                    $campos["arch_resumen"] = "";
-            }else{
-                    subirArchivo('arch_resumen', $idNuevaTarea);
-                    $campos["arch_resumen"] = "/../archivos/tarea_" . $idNuevaTarea . "_" . $_FILES['arch_resumen']['name'];
-            }
-        
-            if ($_FILES['fotos']['name'] == ""){
-                    $campos["fotos"] = "";
-            }else{
-                    subirArchivo('fotos', $idNuevaTarea);
-                    $campos["fotos"] = "/../archivos/tarea_" . $idNuevaTarea . "_" . $_FILES['fotos']['name'];
-            }*/
 
             /**
              * Array con los nombres de los campos de la base de datos
@@ -114,11 +90,14 @@
 
             }
 
-            include('../models/Tarea.php');
+            include('../library/formatearValoresInsertar.php');
+            $nombre_campos = formatearValoresInsertar($nombre_campos, false);//Segundo parametro controla si se ponen comillas entre elementos del array
+            $valor_campos = formatearValoresInsertar($valor_campos, true);
 
             /**
              * LLama a la función de la clase tarea para insertar los ampos obtenidos en el formulario
              */
+            include('../models/Tarea.php');
             Tarea::addTarea($nombre_campos, $valor_campos);
         
             echo "<a href='procesarInsertartarea.php'>Volver al formulario</a>";

@@ -1,25 +1,25 @@
 <?php
 
-    function getContenido($todos_los_campos, $valor){
+    function getContenido($campos, $valor){
         
         $contenido = "";
 
-        $nombre_del_campo = "";
+        $nombreCampos = "";
 
-        foreach ($todos_los_campos as $nam => $cont) {
-            $contenido  .= $cont . ',';
-            $nombre_del_campo .= $nam . ',';
+        foreach ($campos as $clave => $valor) {
+            $contenido  .= $valor . ',';
+            $nombreCampos .= $clave . ',';
         }
 
         $contenido = substr($contenido, 0, -1);
 
-        $nombre_del_campo = substr($nombre_del_campo, 0, -1);
+        $nombreCampos = substr($nombreCampos, 0, -1);
 
         $a_campos = explode(",", $contenido);
 
         if ($valor) {
             return $a_campos;
         } else {
-            return $nombre_del_campo;
+            return $nombreCampos;
         }
     }

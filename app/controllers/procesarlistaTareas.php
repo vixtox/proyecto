@@ -9,6 +9,10 @@
         'id','nif_cif','nombre','apellidos','telefono','descripcion','estado','fecha_creacion','operario_encargado','fecha_realizacion'
     ];
 
+    $nombreCamposTabla = [
+        'ID','NIF/CIF','Nombre','Apellidos','Teléfono','Descripcion','Estado','Fecha creación','Operario','Fecha realización'
+    ];
+
     $tamanioPagina = 5;
 
 

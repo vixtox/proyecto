@@ -1,12 +1,12 @@
 <?php
 
-    function creaTable($name, $nombreCampos, $listaValores){
+    function creaTable($name, $nombreCampos, $nombreCamposTabla, $listaValores){
 
     $html = '<table class="table table-bordered border-secondary" name="' . $name . '"><tr><thead class="table-dark">';
 
-    foreach($nombreCampos AS $id=>$value) :
+    foreach($nombreCamposTabla AS $id=>$value) :
             
-        $html .= '<th>' . $nombreCampos[$id] . '</th>';
+        $html .= '<th>' . $value . '</th>';
     
     endforeach;
 
@@ -23,8 +23,9 @@
         endforeach;
      
         $html .= '<td><a href="../views/confirmarBorrarTarea.php?id=' . $valor['id'] . '" class="btn btn-info" role="button">Borrar</a></td>
-            <td><a href="../controllers/validar_modficiacion_tarea.php?id=' . $valor['id'] . '" class="btn btn-info" role="button">Actualizar</a></td>
-            <td><a href="../controllers/procesarVerDetalles.php?id=' . $valor['id'] . '" class="btn btn-info" role="button">Ver detalles</a></td></tr>';
+            <td><a href="../controllers/procesarActualizarTarea.php?id=' . $valor['id'] . '" class="btn btn-info" role="button">Actualizar</a></td>
+            <td><a href="../controllers/procesarVerDetalles.php?id=' . $valor['id'] . '" class="btn btn-info" role="button">Detalles</a></td>
+            <td><a href="../controllers/procesarCompletarTarea.php?id=' . $valor['id'] . '" class="btn btn-info" role="button">Completar</a></td></tr>';
 
     endforeach;
 

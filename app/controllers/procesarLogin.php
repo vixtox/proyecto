@@ -1,13 +1,14 @@
 <?php
 
     include("../models/GestionDataBase.php");
+    include("../controllers/varios.php");
 
     $db = GestionDataBase::getInstance();
 
     // Si no han enviado el fomulario
     if (!$_POST) { 
 
-        include("../views/login.php");
+        echo $blade->render('login');
 
     }else{
 
@@ -19,11 +20,15 @@
         if (isset($user['nif'])) {
 
             echo "Bienvenido "  . $user['nif'];
-            include("../views/menu.php");
-
+            echo $blade->render('nada');
+            /*pasando parametro
+              echo $blade->render('nada', [
+                'user' => $user['email'],
+            ]);
+            */
         }else{
 
-            include("../views/login.php");
+            echo $blade->render('login');
 
         }
 

@@ -9,9 +9,14 @@
 </head>
 <body>
 
+    @extends('_template')
+    @section('cuerpo')
+
     <?= creaTableDetalles('filaTareaDetalles', $nombreCampos, $valoresCampos) ?>
     
     <a href="procesarListaTareas.php" class="btn btn-info" role="button">Volver</a>
+
+    @endsection
  
 </body>
 </html>

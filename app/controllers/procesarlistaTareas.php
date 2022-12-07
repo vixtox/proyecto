@@ -4,13 +4,14 @@
     include('../models/GestionDatabase.php');
     include('../library/creaTable.php');
     include('../library/formatearFecha.php');
+    include("varios.php");
 
     $nombreCampos = [
-        'id','nif_cif','nombre','apellidos','telefono','descripcion','estado','fecha_creacion','operario_encargado','fecha_realizacion'
+        'id','nif_cif','nombre','apellidos','telefono','descripcion','estado','operario_encargado','fecha_realizacion'
     ];
 
     $nombreCamposTabla = [
-        'ID','NIF/CIF','Nombre','Apellidos','Teléfono','Descripcion','Estado','Fecha creación','Operario','Fecha realización'
+        'ID','NIF/CIF','Nombre','Apellidos','Teléfono','Descripcion','Estado','Operario','Fecha realización'
     ];
 
     $tamanioPagina = 5;
@@ -65,4 +66,13 @@
     
     endforeach;
 
-    include('../views/listaTareas.php');
+    echo $blade->render('listaTareas', [
+        'tareas' => Tarea::getTareasPorPagina($empezarDesde, $tamanioPagina),
+        'nombreCampos' => $nombreCampos,
+        'empezarDesde' => $empezarDesde,
+        'tamanioPagina' => $tamanioPagina,
+        'pagina' => $pagina,
+        'totalPaginas' => $totalPaginas,
+        'nombreCamposTabla' => $nombreCamposTabla,
+        'listaValores' => $listaValores
+    ]);

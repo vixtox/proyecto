@@ -10,6 +10,9 @@
 </head>
 <body>
 
+    @extends('_template')
+    @section('cuerpo')
+
     <h1>Completar tarea</h1>
 
     <form action="../controllers/procesarCompletarTarea.php?id=<?= $id ?>" method='post' enctype="multipart/form-data">
@@ -39,6 +42,8 @@
             </div>
 
     </form>
+    
+    @endsection
     
 </body>
 </html>

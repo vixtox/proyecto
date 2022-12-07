@@ -5,6 +5,7 @@
     include("../library/getContenido.php");
     include("../models/Tarea.php");
     include("../models/GestionDatabase.php");
+    include("../controllers/varios.php");
     
      /**
      *  Si no han enviado el fomulario
@@ -12,7 +13,9 @@
 
     if (!$_POST) {
         $id = $_GET['id'];
-        include("../views/formularioCompletarTarea.php");
+        echo $blade->render('formularioCompletarTarea', [
+            'id' => $id
+        ]);
 
     /**
      *  Si han enviado el fomulario

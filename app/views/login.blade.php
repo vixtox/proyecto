@@ -19,13 +19,14 @@
 
 </head>
 <body>
+
     <div class="modal-dialog text-center">
         <div class="col-sm-8 main-section">
             <div class="modal-content">
                 <div class="col-12 user-img">
                     <img src="../../Assets/img/user.png" th:src="@{../../Assets/img/user.png}"/>
                 </div>
-                <form action="../controllers/procesarLogin.php" class="col-12" th:action="@{/login}" method="post">
+                <form action="/app/controllers/procesarLogin.php" class="col-12" th:action="@{/login}" method="post">
                     <div class="form-group" id="user-group">
                         <input type="text" class="form-control" placeholder="Nombre de usuario" name="email"/>
                     </div>

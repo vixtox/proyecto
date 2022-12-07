@@ -14,7 +14,7 @@ include("../library/validarCIF.php");
 include("../library/validarFecha.php");
 include("../library/validarTelefono.php");
 include("../library/subirArchivo.php");
-
+include('../controllers/varios.php');
 
 $errores = [];
 
@@ -24,7 +24,7 @@ if (!$_POST) { // Si no han enviado el fomulario
 
     $datosTarea = Tarea::getSelectTarea($id);
  
-    include("../views/formularioActualizarTarea.php");
+    echo $blade->render('formularioActualizarTarea');
 
 } else {
 
@@ -55,7 +55,9 @@ if (!$_POST) { // Si no han enviado el fomulario
 
     if ($errores) {
         $id = $_GET['id'];
-        include("../views/formularioActualizarTarea.php");
+        echo $blade->render('formularioActualizarTarea', [
+            'id' => $id
+        ]);
     } else {
         $campos = $_POST;
 

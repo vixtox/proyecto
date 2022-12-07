@@ -22,7 +22,7 @@
 
         endforeach;
      
-        $html .= '<td><a href="../views/confirmarBorrarTarea.php?id=' . $valor['id'] . '" class="btn btn-info" role="button">Borrar</a></td>
+        $html .= '<td><a href="../controllers/procesarConfirmarBorrarTarea.php?id=' . $valor['id'] . '" class="btn btn-info" role="button">Borrar</a></td>
             <td><a href="../controllers/procesarActualizarTarea.php?id=' . $valor['id'] . '" class="btn btn-info" role="button">Actualizar</a></td>
             <td><a href="../controllers/procesarVerDetalles.php?id=' . $valor['id'] . '" class="btn btn-info" role="button">Detalles</a></td>
             <td><a href="../controllers/procesarCompletarTarea.php?id=' . $valor['id'] . '" class="btn btn-info" role="button">Completar</a></td></tr>';

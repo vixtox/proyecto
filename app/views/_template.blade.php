@@ -15,25 +15,28 @@ Igualmente nuestra aplicación podría tener tantos layouts como deseasemos
 <html>
 
 <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="/Assets/css/template.css">
     <meta charset="UTF-8">
-    <title>Gestor Tareas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-    <header>
-        <div style="background: #ccffff; text-align: center; font-size: 2em">
+    <header class="d-flex justify-content-center py-3">
+        <div id="head">
             Bunglebuild S.L.
         </div>
     </header>
-    <nav id="menu">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
         @include('menu')
     </nav>
     <main id="cuerpo">
         @yield('cuerpo')
     </main>
-    <footer style="background: #ccffcc; clear: both;">
-        Pie de página
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p>Víctor Martínez Domínguez</p>
     </footer>
 </body>
 

@@ -15,6 +15,9 @@
 
 <body>
 
+    @extends('_template')
+    @section('cuerpo')
+
     <h1>Modificaciones Tarea</h1>
 
     <form action='../controllers/procesarActualizarTarea.php?id=<?= $id ?>' method="post" enctype="multipart/form-data">
@@ -125,6 +128,8 @@
 
     </div>
 
+    @endsection
+    
 </body>
 
 </html>

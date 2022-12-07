@@ -9,6 +9,10 @@
     <link href="../../Assets/css/confirmarBorrarTarea.css" rel="stylesheet">
 </head>
 <body>
+
+    
+    <?php $__env->startSection('cuerpo'); ?>
+
     <div class="container">
     <form action="">
         
@@ -18,5 +22,9 @@
 
     </form>
     </div>
+
+    <?php $__env->stopSection(); ?>
+    
 </body>
 </html>
+<?php echo $__env->make('_template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\proyecto\proyecto\app\views/confirmarBorrarTarea.blade.php ENDPATH**/ ?>

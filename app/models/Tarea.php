@@ -33,14 +33,14 @@
             return GestionDatabase::getInstance()->selectAll('tareas');
         }
 
-        static function getNumeroTareas(){
+        static function getNumeroTareas($condicion){
            
-            return GestionDatabase::getInstance()->numFilas('tareas');
+            return GestionDatabase::getInstance()->numFilas('tareas', $condicion);
         }
         
-        static function getTareasPorPagina($empezarDesde, $tamanioPagina){
+        static function getTareasPorPagina($empezarDesde, $tamanioPagina, $condicion){
            
-            return GestionDatabase::getInstance()->resultadosPorPagina('tareas', $empezarDesde, $tamanioPagina);
+            return GestionDatabase::getInstance()->resultadosPorPagina('tareas', $empezarDesde, $tamanioPagina, $condicion);
         }
 
         static function deleteTarea($id){

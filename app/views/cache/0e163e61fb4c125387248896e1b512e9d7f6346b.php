@@ -10,7 +10,8 @@
 </head>
 <body>
 
-    <h1>Insertar Tarea</h1>
+    
+    <?php $__env->startSection('cuerpo'); ?>
 
     <div>
 
@@ -101,6 +102,9 @@
         </form>
 
     </div>
+
+    <?php $__env->stopSection(); ?>
     
 </body>
 </html>
+<?php echo $__env->make('_template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\proyecto\proyecto\app\views/formularioInsertarTarea.blade.php ENDPATH**/ ?>

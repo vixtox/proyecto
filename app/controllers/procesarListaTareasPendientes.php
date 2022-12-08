@@ -1,59 +1,79 @@
 <?php
-include(__DIR__ . '/varios.php');
-include('../models/Tarea.php');
-include('../models/GestionDatabase.php');
-include('../libreria/creaTable.php');
 
-$nombreCampos = [
-    'id', 'nif_cif', 'nombre', 'apellidos', 'descripcion', 'poblacion',
-    'estado', 'fecha_creacion', 'operario_encargado', 'fecha_realizacion',
-];
+    include('../models/Tarea.php');
+    include('../models/GestionDatabase.php');
+    include('../library/creaTable.php');
+    include('../library/formatearFecha.php');
+    include("varios.php");
 
-$tamanioPagina = 5;
+    $nombreCampos = [
+        'id','nif_cif','nombre','apellidos','telefono','descripcion','estado','operario_encargado','fecha_realizacion'
+    ];
 
-/**
- * Comprobar si se ha enviado por parametro el valor de la página a mostrar
- */
-if (isset($_GET['pagina'])) {
+    $nombreCamposTabla = [
+        'ID','NIF/CIF','Nombre','Apellidos','Teléfono','Descripcion','Estado','Operario','Fecha realización'
+    ];
 
-    if ($_GET['pagina'] == 1) {
+    $tamanioPagina = 5;
 
-        header('location:procesarListaTareasPendientes.php');
-    } else {
 
-        $pagina = $_GET['pagina'];
+    /**
+     * Comprobar si se ha enviado por parametro el valor de la página a mostrar
+     */
+    if(isset($_GET['pagina'])){
+
+        if($_GET['pagina'] == 1){
+
+            header('location:procesarListaTareasPendientes.php');
+         
+        }else{
+         
+            $pagina = $_GET['pagina'];
+
+        }
+
+    }else{
+
+        $pagina = 1;
+
+    } 
+  
+    $condicion = " WHERE estado='P' ";
+    $numFilas = Tarea::getNumeroTareas( $condicion);
+    $totalPaginas = ceil($numFilas / $tamanioPagina);
+
+    /**
+     * Comprobar si se ha enviado el valor de la página por el buscador
+     */
+    if(isset($_GET['numPag'])){
+
+        if($_GET['numPag'] > 0 && $_GET['numPag'] <= $totalPaginas){
+            $pagina = $_GET['numPag'];
+        }
+        
     }
-} else {
 
-    $pagina = 1;
-}
+    $empezarDesde = ($pagina-1) * $tamanioPagina;
 
-$numFilas = Tarea::getNumeroTareasPendientes();
-$totalPaginas = ceil($numFilas / $tamanioPagina);
+    $registro = Tarea::getTareasPorPagina($empezarDesde, $tamanioPagina,  $condicion);
 
-/**
- * Comprobar si se ha enviado el valor de la página por el buscador
- */
-if (isset($_GET['numPag'])) {
+    $listaValores = [];
 
-    if ($_GET['numPag'] > 0 && $_GET['numPag'] <= $totalPaginas) {
-        $pagina = $_GET['numPag'];
-    }
-}
+    foreach($registro AS $id=>$valor) : 
 
-$empezarDesde = ($pagina - 1) * $tamanioPagina;
+        $valor['fecha_creacion'] = formatearFecha($valor['fecha_creacion']);
+        $valor['fecha_realizacion'] = formatearFecha($valor['fecha_realizacion']);
+        array_push($listaValores, $valor);
+    
+    endforeach;
 
-//$registro = Tareas::getTareasPorPagina($empezarDesde, $tamanioPagina);
-
-$listaValores = [];
-
-
-echo $blade->render('listaTareasPendientes', [
-    'tareas' => Tarea::getTareasPorPaginaPendientes($empezarDesde, $tamanioPagina),
-    'nombreCampos' => $nombreCampos,
-    'empezarDesde' => $empezarDesde,
-    'tamanioPagina' => $tamanioPagina,
-    'pagina' => $pagina,
-    'totalPaginas' => $totalPaginas
-
-]);
+    echo $blade->render('listaTareasPendientes', [
+        'tareas' => Tarea::getTareasPorPagina($empezarDesde, $tamanioPagina,  $condicion),
+        'nombreCampos' => $nombreCampos,
+        'empezarDesde' => $empezarDesde,
+        'tamanioPagina' => $tamanioPagina,
+        'pagina' => $pagina,
+        'totalPaginas' => $totalPaginas,
+        'nombreCamposTabla' => $nombreCamposTabla,
+        'listaValores' => $listaValores
+    ]);

@@ -113,9 +113,9 @@
             return $datos;
         }
 
-        public function numFilas($tabla){
+        public function numFilas($tabla, $condicion){
 
-            $sql = "SELECT * FROM " . $tabla; 
+            $sql = "SELECT * FROM " . $tabla . $condicion; 
 
             $resultado = $this->db->prepare($sql);
             $resultado->execute();
@@ -125,9 +125,9 @@
             return $numFilas;
         }
 
-        public function resultadosPorPagina($tabla, $empezarDesde, $tamanioPagina){
+        public function resultadosPorPagina($tabla, $empezarDesde, $tamanioPagina, $condicion){
 
-            $queryLimite = "SELECT * FROM " . $tabla . " ORDER BY fecha_realizacion LIMIT " . $empezarDesde . "," . $tamanioPagina;
+            $queryLimite = "SELECT * FROM " . $tabla . $condicion . " ORDER BY fecha_realizacion LIMIT " . $empezarDesde . "," . $tamanioPagina;
 
             $resultado = $this->db->prepare($queryLimite);
             $resultado->execute();

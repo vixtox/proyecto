@@ -63,4 +63,4 @@
 </body>
 
 </html>
-<?php echo $__env->make('_template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\proyecto\proyecto\app\views/verDetallesTarea.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('_template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\proyecto\proyecto\app\views/verDetalles2.blade.php ENDPATH**/ ?>

@@ -10,6 +10,7 @@
     include("../models/Provincia.php");
     include("../models/Operario.php");
     include('../models/GestionDatabase.php'); 
+    include('varios.php'); 
     
     $conexion = GestionDatabase::getInstance();
     $errores = [];
@@ -19,7 +20,7 @@
      */
 
     if (!$_POST) {
-        include("../views/formularioInsertarTarea.php");
+        echo $blade->render('formularioInsertarTarea');
 
     /**
      *  Si han enviado el fomulario
@@ -57,7 +58,7 @@
 
          if($errores){
 
-            include("../views/formularioInsertarTarea.php");
+            echo $blade->render('formularioInsertarTarea');
 
         /**
          * Si todo está correcto se pasan los resultados para manipular los datos
@@ -100,7 +101,7 @@
             include('../models/Tarea.php');
             Tarea::addTarea($nombre_campos, $valor_campos);
         
-            echo "<a href='procesarInsertartarea.php'>Volver al formulario</a>";
+            header('location:procesarListaTareas.php');
 
         }
        

@@ -15,3 +15,4 @@
     
         return $html;
     }
+   // <td><?= ($datosTarea['fichero_resumen'] != "") ? "<a class='btn btn-warning' href='/Files/" . $datosTarea['fichero_resumen'] . "' download='/Files/" . $datosTarea['fichero_resumen'] . "'>Descargar</a>" : "" ?> </td>

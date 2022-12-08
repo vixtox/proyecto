@@ -37,8 +37,9 @@
         $pagina = 1;
 
     } 
-
-    $numFilas = Tarea::getNumeroTareas();
+  
+    $condicion = '';
+    $numFilas = Tarea::getNumeroTareas($condicion);
     $totalPaginas = ceil($numFilas / $tamanioPagina);
 
     /**
@@ -54,7 +55,7 @@
 
     $empezarDesde = ($pagina-1) * $tamanioPagina;
 
-    $registro = Tarea::getTareasPorPagina($empezarDesde, $tamanioPagina);
+    $registro = Tarea::getTareasPorPagina($empezarDesde, $tamanioPagina, $condicion);
 
     $listaValores = [];
 
@@ -67,12 +68,13 @@
     endforeach;
 
     echo $blade->render('listaTareas', [
-        'tareas' => Tarea::getTareasPorPagina($empezarDesde, $tamanioPagina),
+        'tareas' => Tarea::getTareasPorPagina($empezarDesde, $tamanioPagina, $condicion),
         'nombreCampos' => $nombreCampos,
         'empezarDesde' => $empezarDesde,
         'tamanioPagina' => $tamanioPagina,
         'pagina' => $pagina,
         'totalPaginas' => $totalPaginas,
         'nombreCamposTabla' => $nombreCamposTabla,
-        'listaValores' => $listaValores
+        'listaValores' => $listaValores,
+        'condicion' => $condicion
     ]);

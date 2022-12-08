@@ -2,27 +2,31 @@
 
     include("utilsforms.php");
     include("../library/subirArchivo.php");
-    include("../library/getContenido.php");
     include("../models/Tarea.php");
+    include("../library/formatearValoresUpdate.php");
     include("../models/GestionDatabase.php");
-    include("../controllers/varios.php");
-    
-     /**
+    include("varios.php");
+
+     /*
      *  Si no han enviado el fomulario
      */
 
     if (!$_POST) {
         $id = $_GET['id'];
+        $datosTarea = Tarea::getSelectTarea($id);
         echo $blade->render('formularioCompletarTarea', [
-            'id' => $id
+            'id' => $id,
+            'datosTarea' => $datosTarea
         ]);
 
-    /**
+    /*
      *  Si han enviado el fomulario
      */
 
     } else {
+
         $campos = $_POST;
+
         $id = $_GET['id'];
 
         if ($_FILES['arch_resumen']['name'] == "") {
@@ -38,12 +42,10 @@
             subirArchivo('fotos', $id);
             $campos["fotos"] = "Tarea_" . $id . "_" . $_FILES['fotos']['name'];
         }
-
-        include("../library/formatearValoresUpdate.php");
+        
         $sentencia = formatearValoresUpdate($campos);
-
         Tarea::updateTarea($sentencia, $id);
 
         header("location:procesarListaTareas.php");
-    
+
     }

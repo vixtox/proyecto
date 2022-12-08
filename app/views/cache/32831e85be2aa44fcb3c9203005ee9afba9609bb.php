@@ -3,8 +3,8 @@
 
 <body>
 
-    @extends('_template')
-    @section('cuerpo')
+    
+    <?php $__env->startSection('cuerpo'); ?>
 
     <h1>Completar tarea</h1>
 
@@ -68,8 +68,9 @@
 
     </form>
 
-    @endsection
+    <?php $__env->stopSection(); ?>
 
 </body>
 
 </html>
+<?php echo $__env->make('_template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\proyecto\proyecto\app\views/formularioCompletarTarea2.blade.php ENDPATH**/ ?>

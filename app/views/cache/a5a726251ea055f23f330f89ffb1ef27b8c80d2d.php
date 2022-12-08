@@ -9,8 +9,8 @@
 </head>
 <body>
 
-    @extends('_template')
-    @section('cuerpo')
+    
+    <?php $__env->startSection('cuerpo'); ?>
 
     <?= creaTable('listaTareas', $nombreCampos, $nombreCamposTabla, $listaValores) ?>
 
@@ -32,7 +32,8 @@
         <button>Ir a página</button>
     </form>
 
-    @endsection
+    <?php $__env->stopSection(); ?>
 
 </body>
 </html>
+<?php echo $__env->make('_template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\proyecto\proyecto\app\views/listaTareasPendientes.blade.php ENDPATH**/ ?>

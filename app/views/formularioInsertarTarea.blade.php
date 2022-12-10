@@ -14,7 +14,7 @@
 
     
     @section('usuario')
-    <p><a href="../index.php" style="color: white;" class="fa fa-sign-out"></a>  Hora inicio sesion: <?=$_SESSION['hora']?></p>
+    <p>Hora acceso: <?=$_SESSION['hora']?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../index.php" style="color: white;" class="fa fa-sign-out"></a> Log out</p>
     <p><?=$_SESSION['rol'] . ": " . $_SESSION['nombre']?></p>
     @endsection
 

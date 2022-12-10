@@ -35,7 +35,7 @@
                     $_SESSION['rol'] = "Operario";
                 }
            
-                  echo $blade->render('nada');
+                  echo $blade->render('inicio');
                 
             }else{
     

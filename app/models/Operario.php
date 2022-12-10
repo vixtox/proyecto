@@ -2,7 +2,7 @@
 
 class Operario
 {
-    private function __construct(){
+    public function __construct(){
 
     }
 

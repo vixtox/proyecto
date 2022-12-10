@@ -1,15 +1,10 @@
 <?php
 
     include("utilsforms.php");
-    include("../library/validarCIF.php");
     include("../library/validarNIF.php");
+    include("../library/validarClave.php");
     include("../library/validarTelefono.php");
-    include("../library/validarCodPostal.php");
-    include("../library/validarFecha.php");
-    include("../library/creaSelect.php");
-    include("../models/Provincia.php");
-    include("../models/Operario.php");
-    include('../models/GestionDatabase.php'); 
+    include('../models/GestionDatabase.php');
     include('varios.php'); 
     
     $conexion = GestionDatabase::getInstance();
@@ -21,7 +16,7 @@
      */
 
     if (!$_POST) {
-        echo $blade->render('formularioInsertarTarea');
+        echo $blade->render('formularioInsertarUsuario');
 
     /**
      *  Si han enviado el fomulario
@@ -31,26 +26,18 @@
         if (valorPost('nombre') == '') {
             $errores['nombre'] = "El campo no debe estar vacio";
         }
-        if (valorPost('apellidos') == '') {
-            $errores['apellidos'] = "El campo no debe estar vacio";
+       
+        if(!nifValido($_POST["nif"])){
+            $errores['nif'] = "El NIF no es válido";
         }
-        if (valorPost('descripcion') == '') {
-            $errores['descripcion'] = "El campo no debe estar vacio";
-        }
-        if(!cifValido($_POST["nif_cif"]) && !nifValido($_POST["nif_cif"])){
-            $errores['nif_cif'] = "El NIF/CIF no es válido";
+        if(!validarClave($_POST["clave"])){
+            $errores['clave'] = "La clave no es válida";
         }
         if(!telefonoValido($_POST["telefono"])){
             $errores['telefono'] = "El teléfono no es válido";
         }
         if(!filter_input(INPUT_POST, 'correo', FILTER_VALIDATE_EMAIL)) {
             $errores['correo'] = "El email no es válido";
-        }
-        if(!codPostalValido($_POST["codigo_postal"])){
-            $errores['codigo_postal'] = "El código postal no es válido";
-        }
-        if(!fechaValida($_POST["fecha_realizacion"])){
-            $errores['fecha_realizacion'] = "La fecha no es válida";
         }
 
         /**
@@ -59,7 +46,7 @@
 
          if($errores){
 
-            echo $blade->render('formularioInsertarTarea');
+            echo $blade->render('formularioInsertarUsuario');
 
         /**
          * Si todo está correcto se pasan los resultados para manipular los datos
@@ -99,10 +86,10 @@
             /**
              * LLama a la función de la clase tarea para insertar los campos obtenidos en el formulario
              */
-            include('../models/Tarea.php');
-            Tarea::addTarea($nombre_campos, $valor_campos);
+            include('../models/Usuario.php');
+            Usuario::addUser($nombre_campos, $valor_campos);
         
-            header('location:procesarListaTareas.php');
+            //header('location:procesarListaUsuarios.php');
 
         }
        

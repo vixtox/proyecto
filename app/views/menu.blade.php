@@ -4,8 +4,8 @@
 <?php 
     session_start();
     if($_SESSION['rol'] == 'Administrador'){
-        echo '<div><a class="navbar-brand" href="/app/controllers/procesarInsertarTarea.php">Insertar Tarea</a></div>';
+        echo '<div><a class="navbar-brand" href="/app/controllers/procesarInsertarTarea.php">Insertar Tarea</a></div>
+        <div><a class="navbar-brand" href="/app/controllers/procesarInsertarUsuario.php">Insertar Usuario</a></div>';
     }
 ?>
-
 

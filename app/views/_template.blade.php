@@ -27,14 +27,15 @@ Igualmente nuestra aplicación podría tener tantos layouts como deseasemos
 <body>
     <header class="d-flex justify-content-center py-3">
         <div id="head">
-            <h1>Bunglebuild S.L.</h1>
+          <h3 class="fa-solid fa-person-digging"></h3>
+          <h3>Bunglebuild S.L.</h3>
             
         </div>
         <div class="user">
             @yield('usuario')
         </div>
     </header>
-    <nav class="navbar navbar-dark bg-primary">
+    <nav class="navbar navbar-dark bg-primary" >
         @include('menu')
     </nav>
     <main id="cuerpo">

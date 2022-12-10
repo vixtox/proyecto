@@ -90,7 +90,7 @@
         public function insertarCampos($tabla, $nombre_campos, $valor_campos){
 
             $sql = "INSERT INTO " . $tabla . "(" . $nombre_campos . ") VALUES(" . $valor_campos . ")"; 
-        
+
             $resultado = $this->db->prepare($sql);
             $resultado->execute(array());
 

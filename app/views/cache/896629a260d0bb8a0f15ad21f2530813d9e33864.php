@@ -9,16 +9,17 @@
     <script src="https://kit.fontawesome.com/94d5779c24.js" crossorigin="anonymous"></script>
 </head>
 <body>
-@extends('_template')
 
-@section('usuario')
-<p><a href="../index.php" style="color: white;" class="fa fa-sign-out"></a>  Hora inicio sesion: <?=$_SESSION['hora']?></p>
+
+<?php $__env->startSection('usuario'); ?>
+<p>Hora acceso: <?=$_SESSION['hora']?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../index.php" style="color: white;" class="fa fa-sign-out"></a> Log out</p>
 <p><?=$_SESSION['rol'] . ": " . $_SESSION['nombre']?></p>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('cuerpo')
+<?php $__env->startSection('cuerpo'); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
 </body>
 </html>
+<?php echo $__env->make('_template', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\proyecto\proyecto\app\views/inicio.blade.php ENDPATH**/ ?>

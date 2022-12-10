@@ -55,17 +55,16 @@
             </div>
             <br>
             <div class="form-group">
-                <label for="" class="form-label">Selecciona estado</label>
-                <select class="form-select" name="es_admin" id="es_admin">
-                    <option value="0">0 (Operario)</option>
-                    <option value="1">1 (Administrador)</option>
-                </select>
+                <label for="" class="form-label">Selecciona tipo usuario</label><br>
+                <span>Operario &nbsp;</span><input class="form-check-input" type="radio" id="es_admin" name="es_admin" value="0" <?= ValorPost('es_admin') == 0 ? 'checked' : '' ?>>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Administrador &nbsp;</span><input class="form-check-input" type="radio" id="es_admin" name="es_admin" value="1" <?= ValorPost('es_admin') == 1 ? 'checked' : '' ?>>
+            <br><br>
             </div>
             <div class="form-group">
                 <button class="btn btn-dark">Registrar usuario</button>
             </div>
         
-        </form>
+        </form><br><br>
 
     </div>
 

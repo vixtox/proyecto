@@ -1,6 +1,6 @@
 <?php
 
-    function creaTable($name, $nombreCampos, $nombreCamposTabla, $listaValores){
+    function creaTable($name, $nombreCampos, $nombreCamposTabla, $listaValores, $primaryKey){
 
     $html = '<table class="table table-bordered border-secondary" name="' . $name . '"><tr><thead class="table-dark">';
 
@@ -25,21 +25,28 @@
         $html .= '<td>';
 
         if($_SESSION['rol'] == 'Administrador'){
-
-            $html .= '<a href="../controllers/procesarConfirmarBorrarTarea.php?id=' . $valor['id'] . '" class="btn btn-danger">Borrar</a> ';
-        
+            if($name != 'listaUsuarios'){
+                $html .= '<a href="../controllers/procesarConfirmarBorrarTarea.php?id=' . $valor[$primaryKey] . '" class="btn btn-danger">Borrar</a> ';
+            }else{
+                $html .= '<a href="../controllers/procesarConfirmarBorrarUsuario.php?nif=' . $valor[$primaryKey] . '" class="btn btn-danger">Borrar</a> ';
+            }
         }
 
         if($_SESSION['rol'] == 'Administrador'){
-
-            $html .= '<a href="../controllers/procesarActualizarTarea.php?id=' . $valor['id'] . '" class="btn btn-warning">Actualizar</a> ';
+            if($name != 'listaUsuarios'){
+                $html .= '<a href="../controllers/procesarActualizarTarea.php?id=' . $valor[$primaryKey] . '" class="btn btn-warning">Actualizar</a> ';
+            }else{
+                $html .= '<a href="../controllers/procesarActualizarUsuario.php?nif=' . $valor[$primaryKey] . '" class="btn btn-warning">Actualizar</a> ';
+            }
         }
 
-        $html .= '<a href="../controllers/procesarVerDetalles.php?id=' . $valor['id'] . '" class="btn btn-primary">Detalles</a> ';
-        
+        if($name != 'listaUsuarios'){
+            $html .= '<a href="../controllers/procesarVerDetalles.php?id=' . $valor[$primaryKey] . '" class="btn btn-primary">Detalles</a> ';
+        }
+
         if($_SESSION['rol'] == 'Operario'){
 
-            $html .= '<a href="../controllers/procesarCompletarTarea.php?id=' . $valor['id'] . '" class="btn btn-success">Completar</a>';
+            $html .= '<a href="../controllers/procesarCompletarTarea.php?id=' . $valor[$primaryKey] . '" class="btn btn-success">Completar</a>';
         
         }
         

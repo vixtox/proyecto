@@ -123,7 +123,7 @@
                 <button class="btn btn-dark">Actualizar tarea</button>
             </div>
         
-        </form>
+        </form><br>
 
     </div>
 

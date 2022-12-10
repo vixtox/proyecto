@@ -40,12 +40,12 @@
         
         static function getTareasPorPagina($empezarDesde, $tamanioPagina, $condicion){
            
-            return GestionDatabase::getInstance()->resultadosPorPagina('tareas', $empezarDesde, $tamanioPagina, $condicion);
+            return GestionDatabase::getInstance()->resultadosPorPagina('tareas', 'fecha_realizacion', $empezarDesde, $tamanioPagina, $condicion);
         }
 
         static function deleteTarea($id){
            
-            return GestionDatabase::getInstance()->borrarFila('tareas', $id);
+            return GestionDatabase::getInstance()->borrarFila('tareas', 'id', $id);
         }
 
         static function getNombreCamposTarea(){
@@ -55,12 +55,12 @@
 
         static function getSelectTarea($id){
            
-            return GestionDatabase::getInstance()->getSelectFila('tareas', $id);
+            return GestionDatabase::getInstance()->getSelectFila('tareas', 'id', $id);
         }
     
         static function updateTarea($sentencia, $id){
 
-            return GestionDatabase::getInstance()->updateTarea('tareas', $sentencia, $id);
+            return GestionDatabase::getInstance()->updateTarea('tareas', 'id', $sentencia, $id);
         }
 
     }

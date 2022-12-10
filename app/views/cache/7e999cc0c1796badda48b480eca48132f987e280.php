@@ -14,8 +14,9 @@
 
     <h1>Completar tarea</h1>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered border-secondary">
         <tr>
+        <thead class="table-dark">
             <th>ID</th>
             <th>NIF/CIF</th>
             <th>Nombre</th>
@@ -25,6 +26,7 @@
             <th>Fecha de Creacion</th>
             <th>Operario Encargado</th>
             <th>Fecha de Realizacion</th>
+        </thead>
         </tr>
         <tr>
             <td><?= $datosTarea['id'] ?></td>
@@ -71,7 +73,7 @@
         </div>
 
         <div class="form-group">
-            <button class="btn btn-dark">Completar tarea</button>
+            <button class="btn btn-dark">Completar tarea</button><br><br>
         </div>
 
     </form>

@@ -17,25 +17,25 @@
 
     <?php $__env->startSection('cuerpo'); ?>
 
-    <?= creaTable('listaTareas', $nombreCampos, $nombreCamposTabla, $listaValores) ?>
+    <?= creaTable('listaTareas', $nombreCampos, $nombreCamposTabla, $listaValores, 'id') ?>
 
-    <a href="?pagina=1" class="btn btn-dark" role='button'>Primera</a>
+    <a href="../controllers/procesarListaTareas.php?pagina=1" class="btn btn-dark" role='button'>Primera</a>
 
-    <a href="?pagina=<?=($pagina==1) ? $pagina : $pagina - 1 ?>" class="btn btn-dark" role='button'><<</a>
+    <a href="../controllers/procesarListaTareas.php?pagina=<?=($pagina==1) ? $pagina : $pagina - 1 ?>" class="btn btn-dark" role='button'><<</a>
 
     <span>Página <?=$pagina ?></span>
 
-    <a href="?pagina=<?=($pagina==$totalPaginas) ? $pagina : $pagina + 1 ?>" class="btn btn-dark" role='button'>>></a>
+    <a href="../controllers/procesarListaTareas.php?pagina=<?=($pagina==$totalPaginas) ? $pagina : $pagina + 1 ?>" class="btn btn-dark" role='button'>>></a>
 
-    <a href="?pagina=<?=$totalPaginas?>" class="btn btn-dark" role='button'>Última</a>
+    <a href="../controllers/procesarListaTareas.php?pagina=<?=$totalPaginas?>" class="btn btn-dark" role='button'>Última</a>
 
     <span>Nº páginas: <?=$totalPaginas ?></span>
     <br><br>
 
-    <form action="../controllers/procesarListaTareas.php" method="get">
+    <form action="../controllers/procesarListaTareas.php" method="get" style="display:flex; flex-direction:row">
             <input class="form-control" type="text" name="numPag">
-            <button class="btn btn-dark">Ir a página</button>
-    </form>
+            &nbsp;<button class="btn btn-dark">Ir a página</button>
+    </form><br>
 
     <?php $__env->stopSection(); ?>
 

@@ -5,8 +5,15 @@
     session_start();
     if($_SESSION['rol'] == 'Administrador'){
         echo '<div><a class="navbar-brand" href="/app/controllers/procesarInsertarTarea.php">Insertar Tarea</a></div>
-        <div><a class="navbar-brand" href="/app/controllers/procesarInsertarUsuario.php">Insertar Usuario</a></div>';
+        <div><a class="navbar-brand" href="/app/controllers/procesarInsertarUsuario.php">Insertar Usuario</a></div>
+        <div><a class="navbar-brand" href="/app/controllers/procesarListaUsuarios.php">Ver Lista Usuarios</a></div>';
     }
+
+    if($_SESSION['rol'] == 'Operario'){
+      //  echo $_SESSION['nif'];
+        echo '<div><a class="navbar-brand" href="/app/controllers/procesarActualizarUsuario.php?nif=' . $_SESSION['nif'] . '">Editar usuario</a></div>';
+    }
+
 ?>
 
 <?php /**PATH C:\xampp\htdocs\proyecto\proyecto\app\views/menu.blade.php ENDPATH**/ ?>

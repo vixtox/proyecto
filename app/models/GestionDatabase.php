@@ -125,9 +125,9 @@
             return $numFilas;
         }
 
-        public function resultadosPorPagina($tabla, $empezarDesde, $tamanioPagina, $condicion){
+        public function resultadosPorPagina($tabla, $orden, $empezarDesde, $tamanioPagina, $condicion){
 
-            $queryLimite = "SELECT * FROM " . $tabla . $condicion . " ORDER BY fecha_realizacion LIMIT " . $empezarDesde . "," . $tamanioPagina;
+            $queryLimite = "SELECT * FROM " . $tabla . $condicion . " ORDER BY $orden LIMIT " . $empezarDesde . "," . $tamanioPagina;
 
             $resultado = $this->db->prepare($queryLimite);
             $resultado->execute();
@@ -146,10 +146,10 @@
 
         }
 
-        public function borrarFila($tabla, $id){
+        public function borrarFila($tabla, $nombreCampo, $valorCampo){
 
-            $sql = "DELETE FROM " . $tabla . " WHERE id=" . $id; 
-        
+            $sql = "DELETE FROM " . $tabla . " WHERE " . $nombreCampo ."='" . $valorCampo . "'"; 
+   
             $resultado = $this->db->prepare($sql);
             $resultado->execute();
 
@@ -167,17 +167,17 @@
             return $datos;
         }
 
-        public function getSelectFila($tabla, $id){
+        public function getSelectFila($tabla, $nombreCampo, $valorCampo){
 
-            $stmt = $this->db->query("SELECT * FROM " . $tabla . " WHERE id=" . $id);
+            $stmt = $this->db->query("SELECT * FROM " . $tabla . " WHERE " . $nombreCampo . "='" . $valorCampo . "'");
 
             return $stmt->fetch();
         }
 
-        function updateTarea($tabla, $sentencia, $id){
+        function updateTarea($tabla, $nombreCampo, $sentencia, $valorCampo){
 
-            $sql = "UPDATE " . $tabla . " SET " . $sentencia ." WHERE id = $id";
-            
+            $sql = "UPDATE " . $tabla . " SET " . $sentencia ." WHERE " . $nombreCampo . "='" . $valorCampo . "'";
+            echo $sql;
             $resultado = $this->db->prepare($sql);
             $resultado->execute(array());
         

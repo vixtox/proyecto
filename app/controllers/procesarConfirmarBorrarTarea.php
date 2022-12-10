@@ -1,6 +1,6 @@
 <?php
 
-    include('../controllers/varios.php');
+    include('varios.php');
 
     session_start();
     

@@ -28,6 +28,7 @@
 
                 $_SESSION['hora'] = $hora;
                 $_SESSION['nombre'] = $user['nombre'];
+                $_SESSION['nif'] = $user['nif'];
 
                 if ($user['es_admin'] == 1) {
                     $_SESSION['rol'] = "Administrador";

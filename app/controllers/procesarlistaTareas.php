@@ -6,6 +6,8 @@
     include('../library/formatearFecha.php');
     include("varios.php");
 
+    session_start();
+
     $nombreCampos = [
         'id','nif_cif','nombre','apellidos','telefono','descripcion','estado','operario_encargado','fecha_realizacion'
     ];

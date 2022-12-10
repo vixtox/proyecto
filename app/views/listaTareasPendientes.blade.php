@@ -10,26 +10,32 @@
 <body>
 
     @extends('_template')
+
+    @section('usuario')
+    <p><a href="../index.php" style="color: white;" class="fa fa-sign-out"></a>  Hora inicio sesion: <?=$_SESSION['hora']?></p>
+    <p><?=$_SESSION['rol'] . ": " . $_SESSION['nombre']?></p>
+    @endsection
+
     @section('cuerpo')
 
     <?= creaTable('listaTareas', $nombreCampos, $nombreCamposTabla, $listaValores) ?>
 
-    <a href="?pagina=1" class='btn btn-info' role='button'>Primera</a>
+    <a href="?pagina=1" class="btn btn-dark" role='button'>Primera</a>
 
-    <a href="?pagina=<?=($pagina==1) ? $pagina : $pagina - 1 ?>" class='btn btn-info' role='button'><<</a>
+    <a href="?pagina=<?=($pagina==1) ? $pagina : $pagina - 1 ?>" class="btn btn-dark" role='button'><<</a>
 
     <span>Página <?=$pagina ?></span>
 
-    <a href="?pagina=<?=($pagina==$totalPaginas) ? $pagina : $pagina + 1 ?>" class='btn btn-info' role='button'>>></a>
+    <a href="?pagina=<?=($pagina==$totalPaginas) ? $pagina : $pagina + 1 ?>" class="btn btn-dark" role='button'>>></a>
 
-    <a href="?pagina=<?=$totalPaginas?>" class='btn btn-info' role='button'>Última</a>
+    <a href="?pagina=<?=$totalPaginas?>" class="btn btn-dark" role='button'>Última</a>
 
     <span>Nº páginas: <?=$totalPaginas ?></span>
     <br><br>
 
-   <form action="../controllers/procesarListaTareasPendientes.php" method="get">
-        <input type="text" name="numPag">
-        <button>Ir a página</button>
+    <form action="../controllers/procesarListaTareasPendientes.php" method="get">
+            <input class="form-control" type="text" name="numPag">
+            <button class="btn btn-dark">Ir a página</button>
     </form>
 
     @endsection

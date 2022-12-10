@@ -6,15 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario tareas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../Assets/css/form_tarea.css">
+
 </head>
 <body>
+
+    
+
+    
+    <?php $__env->startSection('usuario'); ?>
+    <p><a href="../index.php" style="color: white;" class="fa fa-sign-out"></a>  Hora inicio sesion: <?=$_SESSION['hora']?></p>
+    <p><?=$_SESSION['rol'] . ": " . $_SESSION['nombre']?></p>
+    <?php $__env->stopSection(); ?>
 
     
     <?php $__env->startSection('cuerpo'); ?>
 
     <div>
-
+        <h1>Insertar tarea</h1>
         <form action="../controllers/procesarInsertarTarea.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for=""  class="form-label">NIF/CIF</label>
@@ -96,7 +104,7 @@
             <br>
        
             <div class="form-group">
-                <button class="btn btn-primary">Enviar tarea</button>
+                <button class="btn btn-dark">Enviar tarea</button>
             </div>
         
         </form>

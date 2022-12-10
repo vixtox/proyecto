@@ -13,6 +13,7 @@
     include('varios.php'); 
     
     $conexion = GestionDatabase::getInstance();
+    session_start();
     $errores = [];
 
     /**
@@ -66,7 +67,7 @@
 
         }else{
 
-                    /**
+        /**
          * Se recogen todos los campos del formulario
          */
 

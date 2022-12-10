@@ -2,23 +2,22 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="../../Assets/css/form_tarea.css">
-
-    <title>Formulario</title>
+    <title>Actualizar Tarea</title>
 </head>
 
 <body>
 
     
+
+    <?php $__env->startSection('usuario'); ?>
+    <p><a href="../index.php" style="color: white;" class="fa fa-sign-out"></a>  Hora inicio sesion: <?=$_SESSION['hora']?></p>
+    <p><?=$_SESSION['rol'] . ": " . $_SESSION['nombre']?></p>
+    <?php $__env->stopSection(); ?>
+
     <?php $__env->startSection('cuerpo'); ?>
 
-    <h1>Modificaciones Tarea</h1>
+    <h1>Actualizar Tarea</h1>
 
     <form action='../controllers/procesarActualizarTarea.php?id=<?= $id ?>' method="post" enctype="multipart/form-data">
   
@@ -121,7 +120,7 @@
             </div>
     
             <div class="form-group">
-                <button class="btn btn-primary">Enviar tarea</button>
+                <button class="btn btn-dark">Actualizar tarea</button>
             </div>
         
         </form>

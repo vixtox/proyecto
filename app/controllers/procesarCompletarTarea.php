@@ -7,6 +7,9 @@
     include("../models/GestionDatabase.php");
     include("varios.php");
 
+
+    session_start();
+    
      /*
      *  Si no han enviado el fomulario
      */

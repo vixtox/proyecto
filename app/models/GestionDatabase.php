@@ -140,7 +140,7 @@
 
         public function loginUser($correo, $clave){
 
-            $sql = $this->db->query("SELECT nif FROM usuarios WHERE correo='" . $correo . "' AND clave='" . $clave . "'");
+            $sql = $this->db->query("SELECT * FROM usuarios WHERE correo='" . $correo . "' AND clave='" . $clave . "'");
             
             return $sql->fetch();
 

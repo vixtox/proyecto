@@ -33,16 +33,20 @@
                     <div class="form-group" id="contrasena-group">
                         <input type="password" class="form-control" placeholder="Contrasena" name="pass"/>
                     </div>
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Ingresar </button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Login </button>
                 </form>
-                <div class="col-12 forgot">
+                <!--<div class="col-12 forgot">
                     <a href="#">Recordar contrasena?</a>
+                </div>-->
+                <div class="col-12 forgot">
+                    <input type="checkbox" name="recordar"></input>
+                    <label>Recordar usuario</label>
                 </div>
-                <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                <!--<div th:if="${param.error}" class="alert alert-danger" role="alert">
 		            Invalid username and password.
 		        </div>
 		        <div th:if="${param.logout}" class="alert alert-success" role="alert">
-		            You have been logged out.
+		            You have been logged out.-->
 		        </div>
             </div>
         </div>

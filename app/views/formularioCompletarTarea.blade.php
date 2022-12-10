@@ -4,6 +4,12 @@
 <body>
 
     @extends('_template')
+
+    @section('usuario')
+    <p><a href="../index.php" style="color: white;" class="fa fa-sign-out"></a>  Hora inicio sesion: <?=$_SESSION['hora']?></p>
+    <p><?=$_SESSION['rol'] . ": " . $_SESSION['nombre']?></p>
+    @endsection
+
     @section('cuerpo')
 
     <h1>Completar tarea</h1>
@@ -44,12 +50,14 @@
 
         <div class="form-group">
             <label for="" class="form-label">Anotaciones anteriores</label>
-            <textarea class="form-control" name="anotaciones_ant" rows="2" cols="50"><?= valorPost('anotaciones_ant') ?></textarea><br><br>
+            <textarea class="form-control" name="anotaciones_ant" rows="2" cols="50"><?= isset($datosTarea["anotaciones_ant"]) ? $datosTarea["anotaciones_ant"] : "" ?></textarea><br><br>
         </div>
+
+ 
 
         <div class="form-group">
             <label for="" class="form-label">Anotaciones posteriores</label>
-            <textarea class="form-control" name="anotaciones_pos" rows="2" cols="50"><?= valorPost('anotaciones_pos') ?></textarea><br><br>
+            <textarea class="form-control" name="anotaciones_pos" rows="2" cols="50"><?= isset($datosTarea["anotaciones_pos"]) ? $datosTarea["anotaciones_pos"] : "" ?></textarea><br><br>
         </div>
 
         <div class="form-group">

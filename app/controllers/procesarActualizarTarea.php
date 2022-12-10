@@ -17,6 +17,7 @@ include("../library/subirArchivo.php");
 include('../controllers/varios.php');
 
 $errores = [];
+session_start();
 
 if (!$_POST) { // Si no han enviado el fomulario
 
@@ -24,7 +25,10 @@ if (!$_POST) { // Si no han enviado el fomulario
 
     $datosTarea = Tarea::getSelectTarea($id);
  
-    echo $blade->render('formularioActualizarTarea');
+    echo $blade->render('formularioActualizarTarea', [
+        'id' => $id,
+        'datosTarea' => $datosTarea
+    ]);
 
 } else {
 

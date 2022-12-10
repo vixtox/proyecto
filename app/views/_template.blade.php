@@ -19,6 +19,7 @@ Igualmente nuestra aplicación podría tener tantos layouts como deseasemos
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="/Assets/css/template.css">
+    <script src="https://kit.fontawesome.com/94d5779c24.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -26,18 +27,63 @@ Igualmente nuestra aplicación podría tener tantos layouts como deseasemos
 <body>
     <header class="d-flex justify-content-center py-3">
         <div id="head">
-            Bunglebuild S.L.
+            <h1>Bunglebuild S.L.</h1>
+            
+        </div>
+        <div class="user">
+            @yield('usuario')
         </div>
     </header>
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <nav class="navbar navbar-dark bg-primary">
         @include('menu')
     </nav>
     <main id="cuerpo">
         @yield('cuerpo')
     </main>
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <p>Víctor Martínez Domínguez</p>
-    </footer>
+
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+
+      <!-- Github -->
+      <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/vixtox/proyecto.git" role="button"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+    <!-- Section: Social media -->
+
+  <div class="text-center p-3" style="background-color: rgb(0, 0, 0, 0.2);">
+    <p class="text-white">© 2022 Copyright: Víctor Martínez Domínguez</p>
+  </div>
+
+</footer>
+
 </body>
 
 </html>

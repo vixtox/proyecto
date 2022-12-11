@@ -1,9 +1,18 @@
 <?php
 
+  /**
+         * procesarListaLogin
+         *
+         * @param  mixed $conexion instancia de la base de datos
+         * @param  mixed $email String con el valor del email
+         * @param  mixed $pass String con el valor de la contraseña
+         * @param  mixed $user array con los datos del usuario
+         */
+
         include("../models/GestionDataBase.php");
         include("varios.php");
     
-        $db = GestionDataBase::getInstance();
+        $conexion = GestionDataBase::getInstance();
 
         if (isset($_SESSION)) {
             session_destroy();
@@ -19,7 +28,7 @@
             $email = $_POST['email'];
             $pass = $_POST['pass'];
     
-            $user = $db->loginUser($email, $pass);
+            $user = $conexion->loginUser($email, $pass);
     
             if (isset($user['nif'])) {
 
@@ -29,6 +38,7 @@
                 $_SESSION['hora'] = $hora;
                 $_SESSION['nombre'] = $user['nombre'];
                 $_SESSION['nif'] = $user['nif'];
+                
 
                 if ($user['es_admin'] == 1) {
                     $_SESSION['rol'] = "Administrador";
@@ -39,8 +49,10 @@
                   echo $blade->render('inicio');
                 
             }else{
-    
-                echo $blade->render('login');
+                $error = '<span style="color:red">Usuario o contraseña incorrectos</span>';
+                echo $blade->render('login', [
+                    'error' => $error
+                ]);
     
             }
     

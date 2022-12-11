@@ -1,4 +1,10 @@
 <?php
+
+ /**
+         * procesarBorrarUsuario
+         *
+         * @param  mixed $nif nif del usuario
+         */
     
     include('../models/GestionDataBase.php'); 
     include('../models/Usuario.php'); 

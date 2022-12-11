@@ -1,9 +1,14 @@
 <?php
 
+  
     /**
-     * Clase encargada de gestionar las conexiones a la base de datos
-     */
-    
+    * GestionDatabase clase encargada de gestionar la base de  datos
+    * @param  mixed $db array 
+    * @param  mixed $url String url
+    * @param  mixed $usuario String usuario 
+    * @param  mixed $pass String password
+    * @param  mixed $instance 
+    */
     Class GestionDatabase{
 
         private $db;
@@ -11,27 +16,31 @@
         private $usuario = 'root';
         private $pass = '';
         private static $_instance;
-        
+     
         /**
-         * La función construct es privada para evitar que el objeto pueda ser creado mediante new
+         * __construct
+         *La función construct es privada para evitar que el objeto pueda ser creado mediante new
+         * @return void
          */
         private function __construct(){
 
             $this->conectar();
 
         }
-
+  
         /**
-         * Evitamos el clonaje del objeto. Patrón Singleton
+         * __clone
+         *Evitamos el clonaje del objeto. Patrón Singleton
+         * @return void
          */
-        
         private function __clone(){ 
         }
-
+    
         /**
-         * Función encargada de crear, el objeto. Hay que llamar desde fuera de la clase para instanciar el objeto
+         * getInstance
+         *Función encargada de crear, el objeto. Hay que llamar desde fuera de la clase para instanciar el objeto
+         * @return void
          */
-        
         public static function getInstance(){
 
             if(!(self::$_instance instanceof self)):
@@ -45,9 +54,10 @@
         }
 
         /**
-         * Realiza la conexión a la base de datos
+         * conectar
+         *Realiza la conexión a la base de datos
+         * @return void
          */
-
         private function conectar(){
 
             try {
@@ -63,11 +73,15 @@
                 }
             }
 
-
         /**
-         * Función genérica para crear select
+         * getListaSelect
+         *Función genérica para crear select
+         * @param  mixed $tabla String nombre tabla base de datos
+         * @param  mixed $c_idx String indice
+         * @param  mixed $c_value String valor
+         * @param  mixed $condicion String con la condicion de la sentencia sql
+         * @return void array que devuelve para crear un select
          */
-
         public function getListaSelect($tabla, $c_idx, $c_value, $condicion=''){
 
             $this->stmt = $this->db->prepare('SELECT ' . $c_idx . ',' . $c_value . ' FROM ' . $tabla . ' ' . $condicion);
@@ -82,11 +96,15 @@
             
             return $lista;
         }
-
+  
         /**
-         * Función genérica insertar en bases de datos
+         * insertarCampos
+         *Función genérica insertar en bases de datos
+         * @param  mixed $tabla String nombre tabla base de datos
+         * @param  mixed $nombre_campos array nombre campos base de datos
+         * @param  mixed $valor_campos array valores de campos a insertar
+         * @return void
          */
-        
         public function insertarCampos($tabla, $nombre_campos, $valor_campos){
 
             $sql = "INSERT INTO " . $tabla . "(" . $nombre_campos . ") VALUES(" . $valor_campos . ")"; 
@@ -95,11 +113,13 @@
             $resultado->execute(array());
 
         }
-
+        
         /**
-         * Función que devuelve todos los campos de una tabla de la bases de datos
+         * selectAll
+         *Función que devuelve todos los campos de una tabla de la bases de datos
+         * @param  mixed $tabla String tabla base de datos
+         * @return void array todos los datos de una tabla
          */
-
         public function selectAll($tabla){
         
             $sql = "SELECT * FROM " . $tabla; 
@@ -112,7 +132,14 @@
 
             return $datos;
         }
-
+        
+        /**
+         * numFilas
+         *
+         * @param  mixed $tabla String tabla base de datos
+         * @param  mixed $condicion String con la condicion de la sentencia sql
+         * @return void int numero filas de la consulta introducida
+         */
         public function numFilas($tabla, $condicion){
 
             $sql = "SELECT * FROM " . $tabla . $condicion; 
@@ -124,7 +151,17 @@
 
             return $numFilas;
         }
-
+        
+        /**
+         * resultadosPorPagina
+         *
+         * @param  mixed $tabla String tabla base de datos
+         * @param  mixed $orden String campo que especifica orden
+         * @param  mixed $empezarDesde int inicio de limit
+         * @param  mixed $tamanioPagina int fin de  limit
+         * @param  mixed $condicion String con la condicion de la sentencia sql
+         * @return void array devuelve resultados por pagina 
+         */
         public function resultadosPorPagina($tabla, $orden, $empezarDesde, $tamanioPagina, $condicion){
 
             $queryLimite = "SELECT * FROM " . $tabla . $condicion . " ORDER BY $orden LIMIT " . $empezarDesde . "," . $tamanioPagina;
@@ -137,7 +174,14 @@
 
             return $datos;
         }
-
+        
+        /**
+         * loginUser
+         *
+         * @param  mixed $correo String con el email
+         * @param  mixed $clave String con la contraseña
+         * @return void array devuelve datops de  usuario
+         */
         public function loginUser($correo, $clave){
 
             $sql = $this->db->query("SELECT * FROM usuarios WHERE correo='" . $correo . "' AND clave='" . $clave . "'");
@@ -145,7 +189,15 @@
             return $sql->fetch();
 
         }
-
+        
+        /**
+         * borrarFila
+         *
+         * @param  mixed $tabla String tabla base de datos
+         * @param  mixed $nombreCampo String con el nombre del campo a borrar
+         * @param  mixed $valorCampo String con el valor del campo a borrar
+         * @return void borra registro seleccionado
+         */
         public function borrarFila($tabla, $nombreCampo, $valorCampo){
 
             $sql = "DELETE FROM " . $tabla . " WHERE " . $nombreCampo ."='" . $valorCampo . "'"; 
@@ -154,7 +206,13 @@
             $resultado->execute();
 
         }
-
+        
+        /**
+         * getNombreColunmasTabla
+         *
+         * @param  mixed $tabla String con el nombre de la tabla
+         * @return void array con los nombres de las columnas de la base de datos
+         */
         public function getNombreColunmasTabla($tabla){
 
             $sql = "SELECT COLUMN_NAME FROM Information_Schema.Columns WHERE TABLE_NAME ='" . $tabla . "'";
@@ -166,14 +224,31 @@
 
             return $datos;
         }
-
+        
+        /**
+         * getSelectFila
+         *
+         * @param  mixed $tabla String con el nombre de la tabla
+         * @param  mixed $nombreCampo String con el nombre del campo
+         * @param  mixed $valorCampo String con el valor del campo
+         * @return void
+         */
         public function getSelectFila($tabla, $nombreCampo, $valorCampo){
 
             $stmt = $this->db->query("SELECT * FROM " . $tabla . " WHERE " . $nombreCampo . "='" . $valorCampo . "'");
 
             return $stmt->fetch();
         }
-
+        
+        /**
+         * updateTarea
+         *
+         * @param  mixed $tabla String con el nombre de la tabla
+         * @param  mixed $nombreCampo String con el nombre del campo
+         * @param  mixed $sentencia con los parametros  a actualizar
+         * @param  mixed $valorCampo String con el valor del campo
+         * @return void
+         */
         function updateTarea($tabla, $nombreCampo, $sentencia, $valorCampo){
 
             $sql = "UPDATE " . $tabla . " SET " . $sentencia ." WHERE " . $nombreCampo . "='" . $valorCampo . "'";
@@ -183,18 +258,4 @@
         
         }
 
-        function buscarRegistros($condicion){
-    
-            $queryLimite = "SELECT id,nif_cif,nombre,apellidos,telefono,descripcion,correo,direccion,poblacion,
-            codigo_postal,provincia,estado,DATE_FORMAT(fecha_creacion, '%d/%m/%Y') AS fecha_creacion ,operario_encargado, DATE_FORMAT(fecha_realizacion, '%d/%m/%Y') AS fecha_realizacion,
-            anotaciones_ant,anotaciones_pos,arch_resumen,fotos FROM tareas " . $condicion;
-
-            $resultado = $this->db->prepare($queryLimite);
-            $resultado->execute();
-    
-            //Almacenamos el resultado de fetchAll en una variable/
-            $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
-    
-            return $datos;
-        }
     }

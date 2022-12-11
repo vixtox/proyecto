@@ -1,5 +1,11 @@
 <?php
-
+    
+    /**
+     * codPostalValido
+     *
+     * @param  mixed $codPostal String código postal
+     * @return void boolean código postal valido
+     */
     function codPostalValido($codPostal){
 
         $numerosCod = str_split($codPostal, 1);

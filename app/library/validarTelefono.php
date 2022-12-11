@@ -1,5 +1,11 @@
 <?php
-
+    
+    /**
+     * telefonoValido
+     *
+     * @param  mixed $telefono String telefono introducido
+     * @return void boolean telefono valido
+     */
     function telefonoValido($telefono){
 
         $numerosTel = str_split($telefono, 1);

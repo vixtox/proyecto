@@ -1,5 +1,11 @@
 <?php
-
+    
+    /**
+     * formatearFecha
+     *
+     * @param  mixed $fechaOriginal String fecha actual
+     * @return void String fecha formateada
+     */
     function formatearFecha($fechaOriginal){
 
         $fechaFormateada = explode('-', $fechaOriginal);

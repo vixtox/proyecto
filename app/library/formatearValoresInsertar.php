@@ -1,9 +1,14 @@
 <?php
 
+   
+    
     /**
-     * Función génerica que formatea los nombres y valores de campos para la sentencia SQL
+     * formatearValoresInsertar
+     *
+     * @param  mixed $campos array de campos recibidos
+     * @param  mixed $comillas Boolean 
+     * @return void String formateado para insertar sql
      */
-
     function formatearValoresInsertar($campos, $comillas){
 
         $cadena = '';

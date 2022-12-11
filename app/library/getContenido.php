@@ -1,5 +1,12 @@
 <?php
-
+    
+    /**
+     * getContenido
+     *
+     * @param  mixed $campos array 
+     * @param  mixed $valor boolean
+     * @return void array o String dependiendo del $valor
+     */
     function getContenido($campos, $valor){
         
         $contenido = "";
@@ -11,6 +18,7 @@
             $nombreCampos .= $clave . ',';
         }
 
+        //Elimina el ultimo elemento, la coma del final
         $contenido = substr($contenido, 0, -1);
 
         $nombreCampos = substr($nombreCampos, 0, -1);

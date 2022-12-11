@@ -1,4 +1,12 @@
 <?php
+
+ /**
+         * procesarPerfilUsuario
+         *
+
+         * @param  mixed $nif String con el valor del nif
+         * @param  mixed $datosUsuario array con los datos del usuario
+         */
     
     include('../models/Usuario.php');
     include('../models/GestionDataBase.php');

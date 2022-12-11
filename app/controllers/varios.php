@@ -1,10 +1,15 @@
 <?php
 
-use Jenssegers\Blade\Blade;
+ /**
+         * varios
+         *
+         */
 
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
+    use Jenssegers\Blade\Blade;
 
-require __DIR__ . '/../ctes.php';
-include (__DIR__.'/../../vendor/autoload.php');
+    error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
-$blade = new Blade(VIEW_PATH, CACHE_PATH);
+    require __DIR__ . '/../ctes.php';
+    include (__DIR__.'/../../vendor/autoload.php');
+
+    $blade = new Blade(VIEW_PATH, CACHE_PATH);

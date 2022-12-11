@@ -1,5 +1,15 @@
 <?php
 
+  /**
+         * procesarInsertarTarea
+         *
+         * @param  mixed $errores array con los errores del formulario
+         * @param  mixed $id id de la tarea
+         * @param  mixed $campos array con todos los campos del formulario
+         * @param  mixed $nombre_campos array con el nombre de los campos de  la base de datos
+         * @param  mixed $valor_campos array con el valor de los campos a inserta en la base de datos
+         */
+
     include("utilsforms.php");
     include("../library/validarCIF.php");
     include("../library/validarNIF.php");
@@ -11,6 +21,7 @@
     include("../models/Operario.php");
     include('../models/GestionDatabase.php'); 
     include('varios.php'); 
+    include("../library/validarInput.php");
     
     $conexion = GestionDatabase::getInstance();
     session_start();
@@ -21,6 +32,7 @@
      */
 
     if (!$_POST) {
+
         echo $blade->render('formularioInsertarTarea');
 
     /**
@@ -28,14 +40,14 @@
      */
 
     } else {
-        if (valorPost('nombre') == '') {
-            $errores['nombre'] = "El campo no debe estar vacio";
+        if (valorPost('nombre') == '' || !validarString($_POST['nombre'])) {
+            $errores['nombre'] = "El campo no debe estar vacio ni contener carácteres especiales";
         }
-        if (valorPost('apellidos') == '') {
-            $errores['apellidos'] = "El campo no debe estar vacio";
+        if (valorPost('apellidos') == '' || !validarString($_POST['apellidos'])) {
+            $errores['apellidos'] = "El campo no debe estar vacio ni contener carácteres especiales";
         }
-        if (valorPost('descripcion') == '') {
-            $errores['descripcion'] = "El campo no debe estar vacio";
+        if (valorPost('descripcion') == '' || !validarStringyNumber($_POST['descripcion'])) {
+            $errores['descripcion'] = "El campo no debe estar vacio ni contener carácteres especiales";
         }
         if(!cifValido($_POST["nif_cif"]) && !nifValido($_POST["nif_cif"])){
             $errores['nif_cif'] = "El NIF/CIF no es válido";
@@ -51,6 +63,12 @@
         }
         if(!fechaValida($_POST["fecha_realizacion"])){
             $errores['fecha_realizacion'] = "La fecha no es válida";
+        }
+        if (!validarStringyNumber($_POST['direccion'])) {
+            $errores['direccion'] = "El campo no debe estar vacio ni contener carácteres especiales";
+        }
+        if (!validarString($_POST['poblacion'])) {
+            $errores['poblacion'] = "El campo no debe estar vacio ni contener carácteres especiales";
         }
 
         /**

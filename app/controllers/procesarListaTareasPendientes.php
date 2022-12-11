@@ -1,5 +1,21 @@
 <?php
 
+  /**
+         * procesarListaTareasPendientes
+         *
+         * @param  mixed $nombre_campos array con el nombre de los campos de  la base de datos
+         * @param  mixed $nombre_camposTabla array con el nombre de los campos de laos th de la tabla
+         * @param  mixed $valor_campos array con el valor de los campos a inserta en la base de datos
+         * @param  mixed $tamanioPagina int tamaño de pagina a paginar
+         * @param  mixed $pagina int numero de pagina
+         * @param  mixed $numFilas int numero de tareas obtenida de la consulta
+         * @param  mixed $totalPaginas int total de paginas de la paginacion
+         * @param  mixed $condicion Strin de la sentencia sql
+         * @param  mixed $empezardesde int pagina desde la que empieza la paginacion
+         * @param  mixed $registro array con el las tareas a paginar
+         * @param  mixed $listaValores array con los datos de la tarea despues de formatear las fechas
+         */
+
     include('../models/Tarea.php');
     include('../models/GestionDatabase.php');
     include('../library/creaTable.php');
@@ -9,11 +25,11 @@
     session_start();
 
     $nombreCampos = [
-        'id','nif_cif','nombre','apellidos','telefono','descripcion','estado','operario_encargado','fecha_realizacion'
+        'id','nif_cif','nombre','apellidos','telefono','descripcion', 'correo', 'codigo_postal', 'estado','operario_encargado','fecha_realizacion'
     ];
-
+    
     $nombreCamposTabla = [
-        'ID','NIF/CIF','Nombre','Apellidos','Teléfono','Descripcion','Estado','Operario','Fecha realización'
+        'ID','NIF/CIF','Nombre','Apellidos','Teléfono','Descripcion','Email', 'Código Postal', 'Estado','Operario','Fecha realización'
     ];
 
     $tamanioPagina = 5;

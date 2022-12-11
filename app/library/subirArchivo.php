@@ -1,10 +1,12 @@
 <?php
-
+    
     /**
-     * Función que sube archivos a la carpeta archivos y les pone un nombre
-     * con el prefijo de tarea y su id
+     * subirArchivo
+     *
+     * @param  mixed $fich String id archivo
+     * @param  mixed $id String id de la tarea
+     * @return void
      */
-
     function subirArchivo($fich,$id){
 
         $directorio = __DIR__ . "/../archivos/";

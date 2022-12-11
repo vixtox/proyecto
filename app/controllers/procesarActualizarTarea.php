@@ -1,5 +1,14 @@
 <?php
 
+  /**
+         * procesarActualizarTarea
+         *
+         * @param  mixed $errores array con los errores del formulario
+         * @param  mixed $datosTarea array con lops datos de  una tarea
+         * @param  mixed $id id de la tarea
+         * @param  mixed $campos array con todos los campos del formulario
+         * @param  mixed $sentencia String con valores formateados para sql
+         */
 include("../models/GestionDataBase.php");
 include("../library/creaSelect.php");
 include("../controllers/utilsforms.php");
@@ -15,6 +24,7 @@ include("../library/validarFecha.php");
 include("../library/validarTelefono.php");
 include("../library/subirArchivo.php");
 include('../controllers/varios.php');
+include("../library/validarInput.php");
 
 $errores = [];
 session_start();
@@ -32,13 +42,13 @@ if (!$_POST) { // Si no han enviado el fomulario
 
 } else {
 
-    if (valorPost('nombre') == '') {
-        $errores['nombre'] = "El campo no debe estar vacio";
+    if (valorPost('nombre') == '' || !validarString($_POST['nombre'])) {
+        $errores['nombre'] = "El campo no debe estar vacio ni contener carácteres especiales";
     }
-    if (valorPost('apellidos') == '') {
+    if (valorPost('apellidos') == '' || !validarString($_POST['apellidos'])) {
         $errores['apellidos'] = "El campo no debe estar vacio";
     }
-    if (valorPost('descripcion') == '') {
+    if (valorPost('descripcion') == '' || !validarStringyNumber($_POST['descripcion'])) {
         $errores['descripcion'] = "El campo no debe estar vacio";
     }
     if(!cifValido($_POST["nif_cif"]) && !nifValido($_POST["nif_cif"])){
@@ -55,6 +65,18 @@ if (!$_POST) { // Si no han enviado el fomulario
     }
     if(!fechaValida($_POST["fecha_realizacion"])){
         $errores['fecha_realizacion'] = "La fecha no es válida";
+    }
+    if (!validarStringyNumber($_POST['direccion'])) {
+        $errores['direccion'] = "El campo no debe contener carácteres especiales";
+    }
+    if (!validarString($_POST['poblacion'])) {
+        $errores['poblacion'] = "El campo no debe contener carácteres especiales";
+    }
+    if (!validarStringyNumber($_POST['anotaciones_ant'])) {
+        $errores['anotaciones_ant'] = "El campo no debe contener carácteres especiales";
+    }
+    if (!validarStringyNumber($_POST['anotaciones_pos'])) {
+        $errores['anotaciones_pos'] = "El campo no debe contener carácteres especiales";
     }
 
     if ($errores) {

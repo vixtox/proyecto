@@ -1,11 +1,22 @@
 <?php
 
+  /**
+         * procesarInsertarUsuario
+         *
+         * @param  mixed $conexion instancia de la base de datos
+         * @param  mixed $errores array con los errores del formulario
+         * @param  mixed $campos array con todos los campos del formulario
+         * @param  mixed $nombre_campos array con el nombre de los campos de  la base de datos
+         * @param  mixed $valor_campos array con el valor de los campos a inserta en la base de datos
+         */
+
     include("utilsforms.php");
     include("../library/validarNIF.php");
     include("../library/validarClave.php");
     include("../library/validarTelefono.php");
     include('../models/GestionDatabase.php');
     include('varios.php'); 
+    include("../library/validarInput.php");
     
     $conexion = GestionDatabase::getInstance();
     session_start();
@@ -23,8 +34,8 @@
      */
 
     } else {
-        if (valorPost('nombre') == '') {
-            $errores['nombre'] = "El campo no debe estar vacio";
+        if (valorPost('nombre') == '' || !validarString($_POST['nombre'])) {
+            $errores['nombre'] = "El campo no debe estar vacio ni contener carácteres especiales";
         }
        
         if(!nifValido($_POST["nif"])){
@@ -89,7 +100,7 @@
             include('../models/Usuario.php');
             Usuario::addUser($nombre_campos, $valor_campos);
         
-            //header('location:procesarListaUsuarios.php');
+            header('location:procesarListaUsuarios.php');
 
         }
        

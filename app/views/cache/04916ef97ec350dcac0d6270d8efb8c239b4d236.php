@@ -60,11 +60,13 @@
             <div class="form-group">
                 <label for="" class="form-label">Dirección</label>
                 <input class="form-control" type="text" name="direccion" value="<?= isset($datosTarea["direccion"]) ? $datosTarea["direccion"] : valorPost('direccion')?>">
+                <?=verError('direccion')?>
             </div>
             <br>
             <div class="form-group">
                 <label for="" class="form-label">Población</label>
                 <input class="form-control" type="text" name="poblacion" value="<?= isset($datosTarea["poblacion"]) ? $datosTarea["poblacion"] : valorPost('poblacion')?>">
+                <?=verError('poblacion')?>
             </div>
             <br>
             <div class="form-group">
@@ -102,11 +104,13 @@
             <div class="form-group">
                 <label for="" class="form-label">Anotaciones anteriores</label>
                 <textarea class="form-control" id="anotaciones_ant" name="anotaciones_ant" rows="2" cols="50"><?= isset($datosTarea["anotaciones_ant"]) ? $datosTarea["anotaciones_ant"] : valorPost('anotaciones_ant')?></textarea><br><br>
+                <?=verError('anotaciones_ant')?>
             </div>
 
             <div class="form-group">
                 <label for="" class="form-label">Anotaciones posteriores</label>
                 <textarea class="form-control" id="anotaciones_post" name="anotaciones_pos" rows="2" cols="50"><?= isset($datosTarea["anotaciones_pos"]) ? $datosTarea["anotaciones_pos"] : valorPost('anotaciones_pos')?></textarea><br><br>
+                <?=verError('anotaciones_pos')?>
             </div>
 
             <div class="form-group">

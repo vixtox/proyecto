@@ -53,13 +53,13 @@
         <div class="form-group">
             <label for="" class="form-label">Anotaciones anteriores</label>
             <textarea class="form-control" name="anotaciones_ant" rows="2" cols="50"><?= isset($datosTarea["anotaciones_ant"]) ? $datosTarea["anotaciones_ant"] : "" ?></textarea><br><br>
+         <?=verError('anotaciones_ant')?>
         </div>
-
- 
 
         <div class="form-group">
             <label for="" class="form-label">Anotaciones posteriores</label>
             <textarea class="form-control" name="anotaciones_pos" rows="2" cols="50"><?= isset($datosTarea["anotaciones_pos"]) ? $datosTarea["anotaciones_pos"] : "" ?></textarea><br><br>
+            <?=verError('anotaciones_pos')?>
         </div>
 
         <div class="form-group">

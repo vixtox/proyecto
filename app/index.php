@@ -1,7 +1,12 @@
 <?php
 
-require __DIR__ . '/models/GestionDatabase.php';
+ /**
+         * index
+         *
+         */
 
-require __DIR__ . '/controllers/varios.php';
+    require __DIR__ . '/models/GestionDatabase.php';
 
-echo $blade->render('login');
+    require __DIR__ . '/controllers/varios.php';
+
+    echo $blade->render('login');

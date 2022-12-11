@@ -8,7 +8,14 @@
 
 <body>
     
+
+   <?php $__env->startSection('usuario'); ?>
+    <p>Hora acceso: <?=$_SESSION['hora']?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../index.php" style="color: white;" class="fa fa-sign-out"></a> Log out</p>
+    <p><?=$_SESSION['rol'] . ": " . $_SESSION['nombre']?></p>
+    <?php $__env->stopSection(); ?>
+
     <?php $__env->startSection('cuerpo'); ?>
+
     <h1>Filtrar tareas</h1>
     <form action="/app/controllers/procesarFiltrarTareas.php" method="post">
 
@@ -78,7 +85,7 @@
                 </td>
             </tr>
         </table>
-        <button class="btn btn-primary mb-3" type="submit">Filtrar</button>
+        <button class="btn btn-dark mb-3" type="submit">Filtrar</button>
     </form>
     <?php $__env->stopSection(); ?>
 </body>

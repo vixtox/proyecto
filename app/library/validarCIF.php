@@ -1,5 +1,11 @@
 <?php
-
+    
+    /**
+     * cifValido
+     *
+     * @param  mixed $cif String NIF o CIF
+     * @return void Boolean nif cif valido
+     */
     function cifValido($cif) {
 
     $cif = strtoupper($cif);

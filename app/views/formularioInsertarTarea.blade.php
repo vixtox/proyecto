@@ -63,11 +63,13 @@
             <div class="form-group">
                 <label for="" class="form-label">Dirección</label>
                 <input class="form-control" type="text" name="direccion" value="<?=valorPost('direccion')?>">
+                <span><?=verError('direccion')?></span>
             </div>
             <br>
             <div class="form-group">
                 <label for="" class="form-label">Población</label>
                 <input class="form-control" type="text" name="poblacion" value="<?=valorPost('poblacion')?>">
+                <span><?=verError('poblacion')?></span>
             </div>
             <br>
             <div class="form-group">

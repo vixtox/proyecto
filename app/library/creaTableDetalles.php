@@ -1,5 +1,13 @@
 <?php
-
+    
+    /**
+     * creaTableDetalles
+     *
+     * @param  mixed $name String nombre de la tabla 
+     * @param  mixed $nombreCampos array indice de valoresCampos
+     * @param  mixed $valoresCampos array valor de los td
+     * @return void String devuelve una tabla
+     */
     function creaTableDetalles($name, $nombreCampos, $valoresCampos){
 
         $html = '<table class="table table-bordered border-secondary name="' . $name . '">

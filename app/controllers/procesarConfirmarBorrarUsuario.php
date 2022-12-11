@@ -1,5 +1,11 @@
 <?php
 
+ /**
+         * procesarConfirmarBorrarUsuario
+         *
+         * @param  mixed $nif nif del usuario
+         */
+
     include('varios.php');
 
     session_start();

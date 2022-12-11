@@ -1,5 +1,11 @@
 <?php
-
+    
+    /**
+     * formatearValoresUpdate
+     *
+     * @param  mixed $campos array campos recibidos
+     * @return void String formateado para sql update
+     */
     function formatearValoresUpdate($campos){
 
         $cadena = '';

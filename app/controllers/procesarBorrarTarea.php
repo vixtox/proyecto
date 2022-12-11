@@ -1,4 +1,9 @@
 <?php
+
+ /**
+         * procesarBorrarTarea
+         * @param  mixed $id id de la tarea
+         */
     
     include('../models/GestionDataBase.php'); 
     include('../models/Tarea.php'); 

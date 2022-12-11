@@ -1,8 +1,13 @@
 <?php
 
-
-
+/**
+ * nifValido
+ *
+ * @param  mixed $nif String nif introducido
+ * @return void boolean nif valido
+ */
 function nifValido($nif) {
+    
         $nif = strtoupper($nif);
         
         $nifRegEx = '/^[0-9]{8}[A-Z]$/i';

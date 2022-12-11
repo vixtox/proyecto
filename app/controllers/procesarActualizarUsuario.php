@@ -1,5 +1,15 @@
 <?php
 
+ /**
+         * procesarActualizarUsuario
+         *
+         * @param  mixed $errores array con los errores del formulario
+         * @param  mixed $datosUsuario array con lops datos de  un usuario
+         * @param  mixed $nif nif del usuario
+         * @param  mixed $campos array con todos los campos del formulario
+         * @param  mixed $sentencia String con valores formateados para sql
+         */
+
 include("../models/GestionDataBase.php");
 include("../controllers/utilsforms.php");
 include("../models/Usuario.php");

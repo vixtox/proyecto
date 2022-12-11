@@ -28,25 +28,18 @@
                 </div>
                 <form action="/app/controllers/procesarLogin.php" class="col-12" th:action="@{/login}" method="post">
                     <div class="form-group" id="user-group">
-                        <input type="text" class="form-control" placeholder="Nombre de usuario" name="email"/>
+                        <input type="text" class="form-control" placeholder="Nombre de usuario" name="email"/><?php if($_POST) echo $error ?>
                     </div>
                     <div class="form-group" id="contrasena-group">
-                        <input type="password" class="form-control" placeholder="Contrasena" name="pass"/>
+                        <input type="password" class="form-control" placeholder="Contrasena" name="pass"/><?php if($_POST) echo $error ?>
                     </div>
                     <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Login </button>
                 </form>
-                <!--<div class="col-12 forgot">
-                    <a href="#">Recordar contrasena?</a>
-                </div>-->
                 <div class="col-12 forgot">
                     <input type="checkbox" name="recordar"></input>
                     <label>Recordar usuario</label>
                 </div>
-                <!--<div th:if="${param.error}" class="alert alert-danger" role="alert">
-		            Invalid username and password.
-		        </div>
-		        <div th:if="${param.logout}" class="alert alert-success" role="alert">
-		            You have been logged out.-->
+    
 		        </div>
             </div>
         </div>

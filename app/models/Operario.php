@@ -1,15 +1,24 @@
 <?php
 
+/**
+ * Operario clase operario
+ */
 class Operario
-{
+{    
+    /**
+     * __construct constructor de Operario
+     *
+     * @return void
+     */
     public function __construct(){
 
     }
-
+    
     /**
-     * Devuelve la lista de operarios para crear un select value = nif, texto = nombre de operario
+     * listaParaSelect
+     *
+     * @return void String que devuelve para crear el select de operarios
      */
-
     static function listaParaSelect(){
         return GestionDatabase::getInstance()->getListaSelect('usuarios', 'nif', 'nombre', 'WHERE es_admin=0');
     }

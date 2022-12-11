@@ -1,5 +1,15 @@
 <?php
-
+    
+    /**
+     * creaTable
+     *
+     * @param  mixed $name String nombre de la tabla
+     * @param  mixed $nombreCampos array nombre de los campos de la base de datos
+     * @param  mixed $nombreCamposTabla array nombre de los th de la tabla creada
+     * @param  mixed $listaValores array valores de los td de la tabla creada
+     * @param  mixed $primaryKey String variable que sirve para identificar los registros a modificar, borrar o listar
+     * @return void devuelve un String de una tabla
+     */
     function creaTable($name, $nombreCampos, $nombreCamposTabla, $listaValores, $primaryKey){
 
     $html = '<table class="table table-bordered border-secondary" name="' . $name . '"><tr><thead class="table-dark">';

@@ -23,8 +23,8 @@ if (!$_POST) { // Si no han enviado el fomulario
 
 }else {
 
-    if (valorPost('nombre') == '') {
-        $errores['nombre'] = "El campo no debe estar vacio";
+    if(!filter_input(INPUT_POST, 'correo', FILTER_VALIDATE_EMAIL)) {
+        $errores['correo'] = "El email no es válido";
     }
     if(!validarClave($_POST["clave"])){
         $errores['clave'] = "La clave no es válida";
@@ -48,6 +48,19 @@ if (!$_POST) { // Si no han enviado el fomulario
 
         Usuario::updateUsuario($sentencia, $nif);
 
-        header("location:procesarListaUsuarios.php");
+        if($_SESSION['rol'] == 'Administrador'){
+
+            header("location:procesarListaUsuarios.php");
+
+        }else{
+            $nif = $_GET['nif'];
+            $datosUsuario = Usuario::getSelectUsuario($nif);
+
+            echo $blade->render('verDatosUsuario', [
+                'datosUsuario' => $datosUsuario
+            ]);
+
+        }
+        
     }
 }

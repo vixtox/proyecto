@@ -63,5 +63,10 @@
             return GestionDatabase::getInstance()->updateTarea('tareas', 'id', $sentencia, $id);
         }
 
+        static function buscarTarea($sentencia){
+
+            return GestionDatabase::getInstance()->buscarRegistros($sentencia);
+        }
+
     }
     

@@ -10,8 +10,10 @@
     }
 
     if($_SESSION['rol'] == 'Operario'){
-      //  echo $_SESSION['nif'];
-        echo '<div><a class="navbar-brand" href="/app/controllers/procesarActualizarUsuario.php?nif=' . $_SESSION['nif'] . '">Editar usuario</a></div>';
+     
+        echo '<div><a class="navbar-brand" href="/app/controllers/procesarActualizarUsuario.php?nif=' . $_SESSION['nif'] . '">Editar usuario</a></div>
+        <div><a class="navbar-brand" href="/app/controllers/procesarPerfilUsuario.php?nif=' . $_SESSION['nif'] . '">Perfil usuario</a></div>';
+    
     }
 
 ?>

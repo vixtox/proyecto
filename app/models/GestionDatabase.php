@@ -177,10 +177,24 @@
         function updateTarea($tabla, $nombreCampo, $sentencia, $valorCampo){
 
             $sql = "UPDATE " . $tabla . " SET " . $sentencia ." WHERE " . $nombreCampo . "='" . $valorCampo . "'";
-            echo $sql;
+            
             $resultado = $this->db->prepare($sql);
             $resultado->execute(array());
         
         }
 
+        function buscarRegistros($condicion){
+    
+            $queryLimite = "SELECT id,nif_cif,nombre,apellidos,telefono,descripcion,correo,direccion,poblacion,
+            codigo_postal,provincia,estado,DATE_FORMAT(fecha_creacion, '%d/%m/%Y') AS fecha_creacion ,operario_encargado, DATE_FORMAT(fecha_realizacion, '%d/%m/%Y') AS fecha_realizacion,
+            anotaciones_ant,anotaciones_pos,arch_resumen,fotos FROM tareas " . $condicion;
+
+            $resultado = $this->db->prepare($queryLimite);
+            $resultado->execute();
+    
+            //Almacenamos el resultado de fetchAll en una variable/
+            $datos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+    
+            return $datos;
+        }
     }

@@ -28,6 +28,7 @@
             if($name != 'listaUsuarios'){
                 $html .= '<a href="../controllers/procesarConfirmarBorrarTarea.php?id=' . $valor[$primaryKey] . '" class="btn btn-danger">Borrar</a> ';
             }else{
+    
                 $html .= '<a href="../controllers/procesarConfirmarBorrarUsuario.php?nif=' . $valor[$primaryKey] . '" class="btn btn-danger">Borrar</a> ';
             }
         }

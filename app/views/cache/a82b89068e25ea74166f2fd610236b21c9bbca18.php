@@ -22,9 +22,9 @@
     <form action='../controllers/procesarActualizarUsuario.php?nif=<?= $nif ?>' method="post">
   
             <div class="form-group">
-                <label for="" class="form-label">Nombre</label>
-                <input class="form-control" type="text" name="nombre" value="<?= isset($datosUsuario["nombre"]) ? $datosUsuario["nombre"] : valorPost('nombre')?>">
-                <?=verError('nombre')?>
+                <label for="" class="form-label">Email</label>
+                <input class="form-control" type="text" name="correo" value="<?= isset($datosUsuario["correo"]) ? $datosUsuario["correo"] : valorPost('correo')?>">
+                <?=verError('correo')?>
             </div>
             <br>
             <div class="form-group">

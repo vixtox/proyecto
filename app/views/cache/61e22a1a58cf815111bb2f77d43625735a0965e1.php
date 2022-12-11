@@ -21,6 +21,12 @@
 
     <table class="table table-bordered">
         <tr>
+            <thead class="table-dark">
+                <th>Nombre campo</th>
+                <th>Valor campo</th>
+            </thead>
+        </tr>
+        <tr>
             <th>ID</th>
             <td><?= $datosTarea['id'] ?></td>
         </tr>

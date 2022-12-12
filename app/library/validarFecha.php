@@ -3,8 +3,8 @@
     /**
      * fechaValida
      *
-     * @param  mixed $fecha String de la fedcha introducida
-     * @return void boolean true si la fecha introducida es mayor que la actual
+     * @param  string $fecha String de la fedcha introducida
+     * @return boolean boolean true si la fecha introducida es mayor que la actual
      */
     function fechaValida($fecha){//Devuelve true si la fecha introducida es mayor que la actual
 

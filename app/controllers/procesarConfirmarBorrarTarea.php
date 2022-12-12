@@ -12,9 +12,20 @@
     include(CTRL_PATH.'varios.php');
 
     session_start();
-    
-    $id = $_GET['id'];
+    if($_SESSION['rol'] == 'Administrador'){
+        
+        $id = $_GET['id'];
 
-    echo $blade->render('confirmarBorrarTarea', [
-        'id' => $id 
-    ]);
+        echo $blade->render('confirmarBorrarTarea', [
+            'id' => $id 
+        ]);
+
+    }else if(($_SESSION['rol'] == 'Operario')){
+
+        header('location:procesarListaTareas.php');
+
+    }else{
+
+        header('location:procesarLogin.php');
+
+    }

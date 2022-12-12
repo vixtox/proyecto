@@ -21,57 +21,61 @@ include(CTRL_PATH.'varios.php');
 $errores = [];
 session_start();
 
-if (!$_POST) { // Si no han enviado el fomulario
+if($_SESSION['rol'] == 'Administrador' || $_SESSION['rol'] == 'Operario'){
 
-    $nif = $_GET['nif'];
+    if (!$_POST) { // Si no han enviado el fomulario
 
-    $datosUsuario = Usuario::getSelectUsuario($nif);
- 
-    echo $blade->render('formularioActualizarUsuario', [
-        'nif' => $nif,
-        'datosUsuario' => $datosUsuario
-    ]);
-
-}else {
-
-    if(!filter_input(INPUT_POST, 'correo', FILTER_VALIDATE_EMAIL)) {
-        $errores['correo'] = "El email no es válido";
-    }
-    if(!validarClave($_POST["clave"])){
-        $errores['clave'] = "La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula";
-    }
-    if(!telefonoValido($_POST["telefono"])){
-        $errores['telefono'] = "El teléfono no es válido";
-    }
-
-    if ($errores) {
         $nif = $_GET['nif'];
+
+        $datosUsuario = Usuario::getSelectUsuario($nif);
+    
         echo $blade->render('formularioActualizarUsuario', [
-            'nif' => $nif
+            'nif' => $nif,
+            'datosUsuario' => $datosUsuario
         ]);
-    } else {
-        $campos = $_POST;
 
-        $nif = $_GET['nif'];
+    }else {
 
-        include("../library/formatearValoresUpdate.php");
-        $sentencia = formatearValoresUpdate($campos);
-
-        Usuario::updateUsuario($sentencia, $nif);
-
-        if($_SESSION['rol'] == 'Administrador'){
-
-            header("location:procesarListaUsuarios.php");
-
-        }else{
-            $nif = $_GET['nif'];
-            $datosUsuario = Usuario::getSelectUsuario($nif);
-
-            echo $blade->render('verDatosUsuario', [
-                'datosUsuario' => $datosUsuario
-            ]);
-
+        if(!filter_input(INPUT_POST, 'correo', FILTER_VALIDATE_EMAIL)) {
+            $errores['correo'] = "El email no es válido";
         }
-        
+        if(!validarClave($_POST["clave"])){
+            $errores['clave'] = "La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula";
+        }
+        if(!telefonoValido($_POST["telefono"])){
+            $errores['telefono'] = "El teléfono no es válido";
+        }
+
+        if ($errores) {
+            $nif = $_GET['nif'];
+            echo $blade->render('formularioActualizarUsuario', [
+                'nif' => $nif
+            ]);
+        } else {
+            $campos = $_POST;
+
+            $nif = $_GET['nif'];
+
+            include("../library/formatearValoresUpdate.php");
+            $sentencia = formatearValoresUpdate($campos);
+
+            Usuario::updateUsuario($sentencia, $nif);
+
+            if($_SESSION['rol'] == 'Administrador'){
+
+                header("location:procesarListaUsuarios.php");
+
+            }else{
+                $nif = $_GET['nif'];
+                $datosUsuario = Usuario::getSelectUsuario($nif);
+
+                echo $blade->render('verDatosUsuario', [
+                    'datosUsuario' => $datosUsuario
+                ]);
+
+            }
+            
+        }
     }
+
 }

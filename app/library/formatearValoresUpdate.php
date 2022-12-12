@@ -3,8 +3,8 @@
     /**
      * formatearValoresUpdate
      *
-     * @param  mixed $campos array campos recibidos
-     * @return void String formateado para sql update
+     * @param  array $campos array campos recibidos
+     * @return string String formateado para sql update
      */
     function formatearValoresUpdate($campos){
 

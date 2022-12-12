@@ -3,22 +3,23 @@
   /**
          * procesarListaUsuarios
          *
-         * @param  mixed $nombreCampos array con el nombre de los campos de  la base de datos
-         * @param  mixed $nombreCamposTabla array con el nombre de los campos de laos th de la tabla
-         * @param  mixed $tamanioPagina int tamaño de pagina a paginar
-         * @param  mixed $pagina int numero de pagina
-         * @param  mixed $numFilas int numero de tareas obtenida de la consulta
-         * @param  mixed $totalPaginas int total de paginas de la paginacion
-         * @param  mixed $condicion Strin de la sentencia sql
-         * @param  mixed $empezardesde int pagina desde la que empieza la paginacion
-         * @param  mixed $registro array con el las tareas a paginar
-         * @param  mixed $listaValores array con los datos de la tarea despues de formatear las fechas
+         * @param  array $nombreCampos array con el nombre de los campos de  la base de datos
+         * @param  array $nombreCamposTabla array con el nombre de los campos de laos th de la tabla
+         * @param  int $tamanioPagina int tamaño de pagina a paginar
+         * @param  int $pagina int numero de pagina
+         * @param  int $numFilas int numero de tareas obtenida de la consulta
+         * @param  int $totalPaginas int total de paginas de la paginacion
+         * @param  string $condicion String de la sentencia sql
+         * @param  int $empezardesde int pagina desde la que empieza la paginacion
+         * @param  array $registro array con el las tareas a paginar
+         * @param  array $listaValores array con los datos de la tarea despues de formatear las fechas
          */
 
-    include('../models/Usuario.php');
-    include('../models/GestionDatabase.php');
-    include('../library/creaTable.php');
-    include("varios.php");
+         require __DIR__ . '/../ctes.php';
+    include(MODEL_PATH.'Usuario.php');
+    include(MODEL_PATH.'GestionDatabase.php');
+    include(LIBRARY_PATH.'creaTable.php');
+    include(CTRL_PATH."varios.php");
 
     session_start();
 

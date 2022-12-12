@@ -3,9 +3,9 @@
     /**
      * getContenido
      *
-     * @param  mixed $campos array 
-     * @param  mixed $valor boolean
-     * @return void array o String dependiendo del $valor
+     * @param  array $campos array 
+     * @param  boolean $valor boolean
+     * @return array array o String dependiendo del $valor
      */
     function getContenido($campos, $valor){
         

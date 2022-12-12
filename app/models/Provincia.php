@@ -21,7 +21,7 @@ class Provincia{
     /**
      * listaParaSelect
      *
-     * @return void String que devuelve para crear el select de provincias
+     * @return array que devuelve para crear el select de provincias
      */
     static function listaParaSelect(){
         return GestionDatabase::getInstance()->getListaSelect('provincias', 'codPoblacion', 'nombre');

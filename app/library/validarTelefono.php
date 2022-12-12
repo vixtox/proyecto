@@ -3,8 +3,8 @@
     /**
      * telefonoValido
      *
-     * @param  mixed $telefono String telefono introducido
-     * @return void boolean telefono valido
+     * @param  string $telefono String telefono introducido
+     * @return boolean boolean telefono valido
      */
     function telefonoValido($telefono){
 

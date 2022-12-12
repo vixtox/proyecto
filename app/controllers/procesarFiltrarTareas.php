@@ -3,23 +3,24 @@
   /**
          * procesarFiltrarTareas
          *
-         * @param  mixed $errores array con los errores del formulario
-         * @param  mixed $datosTarea array con lops datos de  una tarea
-         * @param  mixed $id id de la tarea
-         * @param  mixed $nombreCampos array con nombre campos de la base de datos
-         * @param  mixed $nombreCamposTabla array con nombre campos de th de la tabla
-         * @param  mixed $datos array con todos los campos del formulario
-         * @param  mixed $condicion String con valores formateados para sql
+         * @param  array $errores array con los errores del formulario
+         * @param  array $datosTarea array con lops datos de  una tarea
+         * @param  string $id id de la tarea
+         * @param  array $nombreCampos array con nombre campos de la base de datos
+         * @param  array $nombreCamposTabla array con nombre campos de th de la tabla
+         * @param  array $datos array con todos los campos del formulario
+         * @param  string $condicion String con valores formateados para sql
          */
 
 session_start();
 
-include("varios.php");
-include('../models/Tarea.php');
-include("../library/getContenido.php");
-include("../library/creaTable.php");
-include("../models/GestionDatabase.php");
-include("../library/formatearFecha.php");
+require __DIR__ . '/../ctes.php';
+include(CTRL_PATH."varios.php");
+include(MODEL_PATH.'Tarea.php');
+include(LIBRARY_PATH."getContenido.php");
+include(LIBRARY_PATH."creaTable.php");
+include(MODEL_PATH."GestionDatabase.php");
+include(LIBRARY_PATH."formatearFecha.php");
 
 
 $nombreCampos = [

@@ -5,10 +5,10 @@
     /**
      * creaSelect
      *
-     * @param  mixed $name String nombre del select
-     * @param  mixed $opciones array options del select
-     * @param  mixed $valorDefecto String valor por defecto
-     * @return void retorna un String con un select 
+     * @param  string $name String nombre del select
+     * @param  array $opciones array options del select
+     * @param  string $valorDefecto String valor por defecto
+     * @return string retorna un String con un select 
      */
     function creaSelect($name, $opciones, $valorDefecto = ''){
 

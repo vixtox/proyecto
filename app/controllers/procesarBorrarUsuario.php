@@ -3,13 +3,13 @@
  /**
          * procesarBorrarUsuario
          *
-         * @param  mixed $nif nif del usuario
+         * @param  string $nif nif del usuario
          */
-    
-    include('../models/GestionDataBase.php'); 
-    include('../models/Usuario.php'); 
+        require __DIR__ . '/../ctes.php';
+        include(MODEL_PATH.'GestionDataBase.php'); 
+        include(MODEL_PATH.'Usuario.php'); 
 
-    $nif = $_GET['nif'];
-    Usuario::deleteUsuario($nif);
+        $nif = $_GET['nif'];
+        Usuario::deleteUsuario($nif);
 
-    header('location:../controllers/procesarListaUsuarios.php');
+        header('location:../controllers/procesarListaUsuarios.php');

@@ -3,8 +3,8 @@
     /**
      * cifValido
      *
-     * @param  mixed $cif String NIF o CIF
-     * @return void Boolean nif cif valido
+     * @param  string $cif String NIF o CIF
+     * @return boolean Boolean nif cif valido
      */
     function cifValido($cif) {
 

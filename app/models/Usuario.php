@@ -17,8 +17,8 @@ class Usuario
          /**
           * addUser
           *
-          * @param  mixed $nombre_campos array nombre de campos de la base de datos
-          * @param  mixed $valor_campos array valor de los campos a insertar
+          * @param  array $nombre_campos array nombre de campos de la base de datos
+          * @param  array $valor_campos array valor de los campos a insertar
           * @return void inserta un usuario en la base de datos
           */
          static function addUser($nombre_campos, $valor_campos){
@@ -29,8 +29,8 @@ class Usuario
         /**
          * getNumeroUsuarios
          *
-         * @param  mixed $condicion String con la condicion sql
-         * @return void int devuelve el número de usuarios 
+         * @param  string $condicion String con la condicion sql
+         * @return int int devuelve el número de usuarios 
          */
         static function getNumeroUsuarios($condicion){
            
@@ -40,10 +40,10 @@ class Usuario
         /**
          * getUsuariosPorPagina
          *
-          * @param  mixed $empezarDesde int pagina desde se empieza a mostrar
-         * @param  mixed $tamanioPagina int intervalo superio del Limit de sql
-         * @param  mixed $condicion String condicion de la consulta
-         * @return void array con los los usuarios por página
+          * @param  int $empezarDesde int pagina desde se empieza a mostrar
+         * @param  int $tamanioPagina int intervalo superio del Limit de sql
+         * @param  string $condicion String condicion de la consulta
+         * @return array array con los los usuarios por página
          */
         static function getUsuariosPorPagina($empezarDesde, $tamanioPagina, $condicion){
            
@@ -53,7 +53,7 @@ class Usuario
         /**
          * deleteUsuario
          *
-         * @param  mixed $nif String con nif de usuario
+         * @param  string $nif String con nif de usuario
          * @return void borra usuario de la base de datos
          */
         static function deleteUsuario($nif){
@@ -64,8 +64,8 @@ class Usuario
         /**
          * getSelectUsuario
          *
-         * @param  mixed $nif String con nif de usuario
-         * @return void array con los datos del usuario seleccionado
+         * @param  string $nif String con nif de usuario
+         * @return array array con los datos del usuario seleccionado
          */
         static function getSelectUsuario($nif){
            
@@ -75,8 +75,8 @@ class Usuario
         /**
          * updateUsuario
          *
-         * @param  mixed $sentencia String con la condicion del sql
-         * @param  mixed $nif  String con nif de usuario
+         * @param  string $sentencia String con la condicion del sql
+         * @param  string $nif  String con nif de usuario
          * @return void actualiza datos de usuario en la base de  datos
          */
         static function updateUsuario($sentencia, $nif){

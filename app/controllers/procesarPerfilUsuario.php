@@ -4,13 +4,14 @@
          * procesarPerfilUsuario
          *
 
-         * @param  mixed $nif String con el valor del nif
-         * @param  mixed $datosUsuario array con los datos del usuario
+         * @param  string $nif String con el valor del nif
+         * @param  array $datosUsuario array con los datos del usuario
          */
     
-    include('../models/Usuario.php');
-    include('../models/GestionDataBase.php');
-    include('varios.php');
+         require __DIR__ . '/../ctes.php';
+    include(MODEL_PATH.'Usuario.php');
+    include(MODEL_PATH.'GestionDataBase.php');
+    include(CTRL_PATH.'varios.php');
 
     session_start();
  

@@ -3,8 +3,8 @@
     /**
      * subirArchivo
      *
-     * @param  mixed $fich String id archivo
-     * @param  mixed $id String id de la tarea
+     * @param  string $fich String id archivo
+     * @param  string $id String id de la tarea
      * @return void
      */
     function subirArchivo($fich,$id){

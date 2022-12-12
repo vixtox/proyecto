@@ -3,11 +3,13 @@
  /**
          * procesarConfirmarBorrartarea
          *
-         * @param  mixed $datosUsuario array con lops datos de  un usuario
-         * @param  mixed $id id de la tarea
+         * @param  array $datosUsuario array con lops datos de  un usuario
+         * @param  string $id id de la tarea
          */
 
-    include('varios.php');
+
+         require __DIR__ . '/../ctes.php';
+    include(CTRL_PATH.'varios.php');
 
     session_start();
     

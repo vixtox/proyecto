@@ -3,10 +3,10 @@
     /**
      * creaTableDetalles
      *
-     * @param  mixed $name String nombre de la tabla 
-     * @param  mixed $nombreCampos array indice de valoresCampos
-     * @param  mixed $valoresCampos array valor de los td
-     * @return void String devuelve una tabla
+     * @param  string $name String nombre de la tabla 
+     * @param  array $nombreCampos array indice de valoresCampos
+     * @param  array $valoresCampos array valor de los td
+     * @return string String devuelve una tabla
      */
     function creaTableDetalles($name, $nombreCampos, $valoresCampos){
 

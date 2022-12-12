@@ -5,9 +5,9 @@
     /**
      * formatearValoresInsertar
      *
-     * @param  mixed $campos array de campos recibidos
-     * @param  mixed $comillas Boolean 
-     * @return void String formateado para insertar sql
+     * @param  array $campos array de campos recibidos
+     * @param  boolean $comillas Boolean 
+     * @return string String formateado para insertar sql
      */
     function formatearValoresInsertar($campos, $comillas){
 

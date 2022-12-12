@@ -19,8 +19,8 @@
         /**
          * addTarea
          *
-         * @param  mixed $nombre_campos String nombre de los campos de la base de datos
-         * @param  mixed $valor_campos String valor de los campos a insertar en la base de datos
+         * @param  string $nombre_campos String nombre de los campos de la base de datos
+         * @param  string $valor_campos String valor de los campos a insertar en la base de datos
          * @return void Ejejuta insert
          */
         static function addTarea($nombre_campos, $valor_campos){
@@ -31,7 +31,7 @@
         /**
          * getListaTareas
          *
-         * @return void array devuelve la lista de tareas completa
+         * @return array array devuelve la lista de tareas completa
          */
         static function getListaTareas(){
            
@@ -41,8 +41,8 @@
         /**
          * getNumeroTareas
          *
-         * @param  mixed $condicion String con uina condicion
-         * @return void int Devuelve el número de tareas
+         * @param  string $condicion String con uina condicion
+         * @return int int Devuelve el número de tareas
          */
         static function getNumeroTareas($condicion){
            
@@ -52,10 +52,10 @@
         /**
          * getTareasPorPagina
          *
-         * @param  mixed $empezarDesde int pagina desde se empieza a mostrar
-         * @param  mixed $tamanioPagina int intervalo superio del Limit de sql
-         * @param  mixed $condicion String condicion de la consulta
-         * @return void array con los las tareas por página
+         * @param  int $empezarDesde int pagina desde se empieza a mostrar
+         * @param  int $tamanioPagina int intervalo superio del Limit de sql
+         * @param  string $condicion String condicion de la consulta
+         * @return array array con los las tareas por página
          */
         static function getTareasPorPagina($empezarDesde, $tamanioPagina, $condicion){
            
@@ -65,7 +65,7 @@
         /**
          * deleteTarea
          *
-         * @param  mixed $id String id de la tarea
+         * @param  string $id String id de la tarea
          * @return void Borra una tarea
          */
         static function deleteTarea($id){
@@ -76,7 +76,7 @@
         /**
          * getNombreCamposTarea
          *
-         * @return void array con los nombres de las columnas de la base de datos
+         * @return array array con los nombres de las columnas de la base de datos
          */
         static function getNombreCamposTarea(){
            
@@ -86,8 +86,8 @@
         /**
          * getSelectTarea
          *
-         * @param  mixed $id String id de la tarea
-         * @return void array selecciona datos de una tarea
+         * @param  string $id String id de la tarea
+         * @return array array selecciona datos de una tarea
          */
         static function getSelectTarea($id){
            
@@ -97,9 +97,9 @@
         /**
          * updateTarea
          *
-         * @param  mixed $sentencia String con sentecia sql
-         * @param  mixed $id String id de la tarea
-         * @return void actuakliza tarea en la base de datos
+         * @param  string $sentencia String con sentecia sql
+         * @param  string $id String id de la tarea
+         * @return void actualiza tarea en la base de datos
          */
         static function updateTarea($sentencia, $id){
 

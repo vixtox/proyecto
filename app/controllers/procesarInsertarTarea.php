@@ -3,25 +3,27 @@
   /**
          * procesarInsertarTarea
          *
-         * @param  mixed $errores array con los errores del formulario
-         * @param  mixed $id id de la tarea
-         * @param  mixed $campos array con todos los campos del formulario
-         * @param  mixed $nombre_campos array con el nombre de los campos de  la base de datos
-         * @param  mixed $valor_campos array con el valor de los campos a inserta en la base de datos
+         * @param  array $errores array con los errores del formulario
+         * @param  string $id id de la tarea
+         * @param  array $campos array con todos los campos del formulario
+         * @param  array $nombre_campos array con el nombre de los campos de  la base de datos
+         * @param  array $valor_campos array con el valor de los campos a inserta en la base de datos
          */
 
-    include("utilsforms.php");
-    include("../library/validarCIF.php");
-    include("../library/validarNIF.php");
-    include("../library/validarTelefono.php");
-    include("../library/validarCodPostal.php");
-    include("../library/validarFecha.php");
-    include("../library/creaSelect.php");
-    include("../models/Provincia.php");
-    include("../models/Operario.php");
-    include('../models/GestionDatabase.php'); 
-    include('varios.php'); 
-    include("../library/validarInput.php");
+
+         require __DIR__ . '/../ctes.php';
+    include(CTRL_PATH."utilsforms.php");
+    include(LIBRARY_PATH."validarCIF.php");
+    include(LIBRARY_PATH."validarNIF.php");
+    include(LIBRARY_PATH."validarTelefono.php");
+    include(LIBRARY_PATH."validarCodPostal.php");
+    include(LIBRARY_PATH."validarFecha.php");
+    include(LIBRARY_PATH."creaSelect.php");
+    include(MODEL_PATH."Provincia.php");
+    include(MODEL_PATH."Operario.php");
+    include(MODEL_PATH.'GestionDatabase.php'); 
+    include(CTRL_PATH.'varios.php'); 
+    include(LIBRARY_PATH."validarInput.php");
     
     $conexion = GestionDatabase::getInstance();
     session_start();
@@ -65,10 +67,12 @@
             $errores['fecha_realizacion'] = "La fecha no es válida";
         }
         if (!validarStringyNumber($_POST['direccion'])) {
-            $errores['direccion'] = "El campo no debe estar vacio ni contener carácteres especiales";
+            if((!$_POST['direccion']) == '')
+            $errores['direccion'] = "El campo no debe contener carácteres especiales";
         }
         if (!validarString($_POST['poblacion'])) {
-            $errores['poblacion'] = "El campo no debe estar vacio ni contener carácteres especiales";
+            if((!$_POST['poblacion']) == '')
+            $errores['poblacion'] = "El campo no debe contener carácteres especiales";
         }
 
         /**

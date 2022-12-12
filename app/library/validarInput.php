@@ -3,8 +3,8 @@
     /**
      * validarString
      *
-     * @param  mixed $string
-     * @return void boolean String valido sin carácteres especiales
+     * @param  string $string
+     * @return boolean boolean String valido sin carácteres especiales
      */
     function validarString($string){
 
@@ -20,8 +20,8 @@
     /**
      * validarStringyNumber
      *
-     * @param  mixed $string
-     * @return void boolean
+     * @param  string $string
+     * @return boolean boolean
      */
     function validarStringyNumber($string){
 

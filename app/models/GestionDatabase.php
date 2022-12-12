@@ -4,9 +4,9 @@
     /**
     * GestionDatabase clase encargada de gestionar la base de  datos
     * @param  mixed $db array 
-    * @param  mixed $url String url
-    * @param  mixed $usuario String usuario 
-    * @param  mixed $pass String password
+    * @param  string $url String url
+    * @param  string $usuario String usuario 
+    * @param  string $pass String password
     * @param  mixed $instance 
     */
     Class GestionDatabase{
@@ -76,11 +76,11 @@
         /**
          * getListaSelect
          *Función genérica para crear select
-         * @param  mixed $tabla String nombre tabla base de datos
-         * @param  mixed $c_idx String indice
-         * @param  mixed $c_value String valor
-         * @param  mixed $condicion String con la condicion de la sentencia sql
-         * @return void array que devuelve para crear un select
+         * @param  string $tabla String nombre tabla base de datos
+         * @param  string $c_idx String indice
+         * @param  string $c_value String valor
+         * @param  string $condicion String con la condicion de la sentencia sql
+         * @return array array que devuelve para crear un select
          */
         public function getListaSelect($tabla, $c_idx, $c_value, $condicion=''){
 
@@ -100,9 +100,9 @@
         /**
          * insertarCampos
          *Función genérica insertar en bases de datos
-         * @param  mixed $tabla String nombre tabla base de datos
-         * @param  mixed $nombre_campos array nombre campos base de datos
-         * @param  mixed $valor_campos array valores de campos a insertar
+         * @param  string $tabla String nombre tabla base de datos
+         * @param  array $nombre_campos array nombre campos base de datos
+         * @param  array $valor_campos array valores de campos a insertar
          * @return void
          */
         public function insertarCampos($tabla, $nombre_campos, $valor_campos){
@@ -117,8 +117,8 @@
         /**
          * selectAll
          *Función que devuelve todos los campos de una tabla de la bases de datos
-         * @param  mixed $tabla String tabla base de datos
-         * @return void array todos los datos de una tabla
+         * @param  string $tabla String tabla base de datos
+         * @return array array todos los datos de una tabla
          */
         public function selectAll($tabla){
         
@@ -136,9 +136,9 @@
         /**
          * numFilas
          *
-         * @param  mixed $tabla String tabla base de datos
-         * @param  mixed $condicion String con la condicion de la sentencia sql
-         * @return void int numero filas de la consulta introducida
+         * @param  string $tabla String tabla base de datos
+         * @param  string $condicion String con la condicion de la sentencia sql
+         * @return int int numero filas de la consulta introducida
          */
         public function numFilas($tabla, $condicion){
 
@@ -155,12 +155,12 @@
         /**
          * resultadosPorPagina
          *
-         * @param  mixed $tabla String tabla base de datos
-         * @param  mixed $orden String campo que especifica orden
-         * @param  mixed $empezarDesde int inicio de limit
-         * @param  mixed $tamanioPagina int fin de  limit
-         * @param  mixed $condicion String con la condicion de la sentencia sql
-         * @return void array devuelve resultados por pagina 
+         * @param  string $tabla String tabla base de datos
+         * @param  string $orden String campo que especifica orden
+         * @param  int $empezarDesde int inicio de limit
+         * @param  int $tamanioPagina int fin de  limit
+         * @param  string $condicion String con la condicion de la sentencia sql
+         * @return array array devuelve resultados por pagina 
          */
         public function resultadosPorPagina($tabla, $orden, $empezarDesde, $tamanioPagina, $condicion){
 
@@ -178,9 +178,9 @@
         /**
          * loginUser
          *
-         * @param  mixed $correo String con el email
-         * @param  mixed $clave String con la contraseña
-         * @return void array devuelve datops de  usuario
+         * @param  string $correo String con el email
+         * @param  string $clave String con la contraseña
+         * @return array array devuelve datops de  usuario
          */
         public function loginUser($correo, $clave){
 
@@ -193,9 +193,9 @@
         /**
          * borrarFila
          *
-         * @param  mixed $tabla String tabla base de datos
-         * @param  mixed $nombreCampo String con el nombre del campo a borrar
-         * @param  mixed $valorCampo String con el valor del campo a borrar
+         * @param  string $tabla String tabla base de datos
+         * @param  string $nombreCampo String con el nombre del campo a borrar
+         * @param  string $valorCampo String con el valor del campo a borrar
          * @return void borra registro seleccionado
          */
         public function borrarFila($tabla, $nombreCampo, $valorCampo){
@@ -210,8 +210,8 @@
         /**
          * getNombreColunmasTabla
          *
-         * @param  mixed $tabla String con el nombre de la tabla
-         * @return void array con los nombres de las columnas de la base de datos
+         * @param  string $tabla String con el nombre de la tabla
+         * @return array array con los nombres de las columnas de la base de datos
          */
         public function getNombreColunmasTabla($tabla){
 
@@ -228,10 +228,10 @@
         /**
          * getSelectFila
          *
-         * @param  mixed $tabla String con el nombre de la tabla
-         * @param  mixed $nombreCampo String con el nombre del campo
-         * @param  mixed $valorCampo String con el valor del campo
-         * @return void
+         * @param  string $tabla String con el nombre de la tabla
+         * @param  string $nombreCampo String con el nombre del campo
+         * @param  string $valorCampo String con el valor del campo
+         * @return array
          */
         public function getSelectFila($tabla, $nombreCampo, $valorCampo){
 
@@ -243,10 +243,10 @@
         /**
          * updateTarea
          *
-         * @param  mixed $tabla String con el nombre de la tabla
-         * @param  mixed $nombreCampo String con el nombre del campo
-         * @param  mixed $sentencia con los parametros  a actualizar
-         * @param  mixed $valorCampo String con el valor del campo
+         * @param  string $tabla String con el nombre de la tabla
+         * @param  string $nombreCampo String con el nombre del campo
+         * @param  string $sentencia con los parametros  a actualizar
+         * @param  string $valorCampo String con el valor del campo
          * @return void
          */
         function updateTarea($tabla, $nombreCampo, $sentencia, $valorCampo){

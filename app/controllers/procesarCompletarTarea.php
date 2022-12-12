@@ -3,20 +3,22 @@
  /**
          * procesarCompletarTarea
          *
-         * @param  mixed $errores array con los errores del formulario
-         * @param  mixed $datosTarea array con lops datos de  una tarea
-         * @param  mixed $id id de la tarea
-         * @param  mixed $campos array con todos los campos del formulario
-         * @param  mixed $sentencia String con valores formateados para sql
+         * @param  array $errores array con los errores del formulario
+         * @param  array $datosTarea array con lops datos de  una tarea
+         * @param  string $id id de la tarea
+         * @param  array $campos array con todos los campos del formulario
+         * @param  string $sentencia String con valores formateados para sql
          */
 
-    include("utilsforms.php");
-    include("../library/subirArchivo.php");
-    include("../models/Tarea.php");
-    include("../library/formatearValoresUpdate.php");
-    include("../models/GestionDatabase.php");
-    include("varios.php");
-    include("../library/validarInput.php");
+
+         require __DIR__ . '/../ctes.php';
+    include(CTRL_PATH."utilsforms.php");
+    include(LIBRARY_PATH."subirArchivo.php");
+    include(MODEL_PATH."Tarea.php");
+    include(LIBRARY_PATH."formatearValoresUpdate.php");
+    include(MODEL_PATH."GestionDatabase.php");
+    include(CTRL_PATH."varios.php");
+    include(LIBRARY_PATH."validarInput.php");
 
     session_start();
     $errores = [];
@@ -39,9 +41,11 @@
     } else {
 
         if (!validarStringyNumber($_POST['anotaciones_ant'])) {
+            if(!$_POST['anotaciones_ant'] == '')
             $errores['anotaciones_ant'] = "El campo no debe contener carácteres especiales";
         }
         if (!validarStringyNumber($_POST['anotaciones_pos'])) {
+            if(!$_POST['anotaciones_pos'] == '')
             $errores['anotaciones_pos'] = "El campo no debe contener carácteres especiales";
         }
 

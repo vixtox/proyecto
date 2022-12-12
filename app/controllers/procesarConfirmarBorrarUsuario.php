@@ -3,10 +3,11 @@
  /**
          * procesarConfirmarBorrarUsuario
          *
-         * @param  mixed $nif nif del usuario
+         * @param string $nif nif del usuario
          */
 
-    include('varios.php');
+         require __DIR__ . '/../ctes.php';
+    include(CTRL_PATH.'varios.php');
 
     session_start();
     

@@ -3,19 +3,20 @@
  /**
          * procesarActualizarUsuario
          *
-         * @param  mixed $errores array con los errores del formulario
-         * @param  mixed $datosUsuario array con lops datos de  un usuario
-         * @param  mixed $nif nif del usuario
-         * @param  mixed $campos array con todos los campos del formulario
-         * @param  mixed $sentencia String con valores formateados para sql
+         * @param  array $errores array con los errores del formulario
+         * @param  array $datosUsuario array con lops datos de  un usuario
+         * @param  string $nif nif del usuario
+         * @param  array $campos array con todos los campos del formulario
+         * @param  string $sentencia String con valores formateados para sql
          */
 
-include("../models/GestionDataBase.php");
-include("../controllers/utilsforms.php");
-include("../models/Usuario.php");
-include("../library/validarTelefono.php");
-include("../library/validarClave.php");
-include('varios.php');
+         require __DIR__ . '/../ctes.php';
+include(MODEL_PATH."GestionDataBase.php");
+include(CTRL_PATH."utilsforms.php");
+include(MODEL_PATH."Usuario.php");
+include(LIBRARY_PATH."validarTelefono.php");
+include(LIBRARY_PATH."validarClave.php");
+include(CTRL_PATH.'varios.php');
 
 $errores = [];
 session_start();
@@ -37,7 +38,7 @@ if (!$_POST) { // Si no han enviado el fomulario
         $errores['correo'] = "El email no es válido";
     }
     if(!validarClave($_POST["clave"])){
-        $errores['clave'] = "La clave no es válida";
+        $errores['clave'] = "La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula";
     }
     if(!telefonoValido($_POST["telefono"])){
         $errores['telefono'] = "El teléfono no es válido";

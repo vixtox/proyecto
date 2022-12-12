@@ -3,8 +3,8 @@
 /**
  * nifValido
  *
- * @param  mixed $nif String nif introducido
- * @return void boolean nif valido
+ * @param  string $nif String nif introducido
+ * @return boolean boolean nif valido
  */
 function nifValido($nif) {
     

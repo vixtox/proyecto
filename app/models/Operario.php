@@ -17,7 +17,7 @@ class Operario
     /**
      * listaParaSelect
      *
-     * @return void String que devuelve para crear el select de operarios
+     * @return array String que devuelve para crear el select de operarios
      */
     static function listaParaSelect(){
         return GestionDatabase::getInstance()->getListaSelect('usuarios', 'nif', 'nombre', 'WHERE es_admin=0');

@@ -4,13 +4,13 @@
          * procesarListaLogin
          *
          * @param  mixed $conexion instancia de la base de datos
-         * @param  mixed $email String con el valor del email
-         * @param  mixed $pass String con el valor de la contraseña
-         * @param  mixed $user array con los datos del usuario
+         * @param  string $email String con el valor del email
+         * @param  string $pass String con el valor de la contraseña
+         * @param  array $user array con los datos del usuario
          */
-
-        include("../models/GestionDataBase.php");
-        include("varios.php");
+        require __DIR__ . '/../ctes.php';
+        include(MODEL_PATH."GestionDataBase.php");
+        include(CTRL_PATH."varios.php");
     
         $conexion = GestionDataBase::getInstance();
 

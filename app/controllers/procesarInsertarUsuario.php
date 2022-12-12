@@ -4,19 +4,20 @@
          * procesarInsertarUsuario
          *
          * @param  mixed $conexion instancia de la base de datos
-         * @param  mixed $errores array con los errores del formulario
-         * @param  mixed $campos array con todos los campos del formulario
-         * @param  mixed $nombre_campos array con el nombre de los campos de  la base de datos
-         * @param  mixed $valor_campos array con el valor de los campos a inserta en la base de datos
+         * @param  array $errores array con los errores del formulario
+         * @param  array $campos array con todos los campos del formulario
+         * @param  array $nombre_campos array con el nombre de los campos de  la base de datos
+         * @param  array $valor_campos array con el valor de los campos a inserta en la base de datos
          */
 
-    include("utilsforms.php");
-    include("../library/validarNIF.php");
-    include("../library/validarClave.php");
-    include("../library/validarTelefono.php");
-    include('../models/GestionDatabase.php');
-    include('varios.php'); 
-    include("../library/validarInput.php");
+         require __DIR__ . '/../ctes.php';
+    include(CTRL_PATH."utilsforms.php");
+    include(LIBRARY_PATH."validarNIF.php");
+    include(LIBRARY_PATH."validarClave.php");
+    include(LIBRARY_PATH."validarTelefono.php");
+    include(MODEL_PATH.'GestionDatabase.php');
+    include(CTRL_PATH.'varios.php'); 
+    include(LIBRARY_PATH."validarInput.php");
     
     $conexion = GestionDatabase::getInstance();
     session_start();
@@ -42,7 +43,7 @@
             $errores['nif'] = "El NIF no es válido";
         }
         if(!validarClave($_POST["clave"])){
-            $errores['clave'] = "La clave no es válida";
+            $errores['clave'] = "La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula";
         }
         if(!telefonoValido($_POST["telefono"])){
             $errores['telefono'] = "El teléfono no es válido";
